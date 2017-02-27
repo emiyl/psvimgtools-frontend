@@ -51,6 +51,7 @@ def patch(backup):
     if not os.path.exists(CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"):
         shutil.copytree(defs.getWorkingDir() + "/easyinstallers/ARK/ARK_01234",CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_0123")
     import easyInstallers
+    tkMessageBox.showinfo(title="VHBL Easy Installer",message="VHBL Backup Created! (Note: Icon will be the same as base game)")
     easyInstallers.close_window(root)
     easyInstallers.vp_start_gui()
 
