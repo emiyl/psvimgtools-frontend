@@ -162,6 +162,7 @@ def goSign(acc,ld,bkup,resign):
             elif sys.platform.__contains__("win"):
                 print("Executing: psvimg-create.exe -m "+'"'+CMA+"/EXTRACTED/" +ld+"/"+ bkup+"/"+foldParams[am]+'.psvmd-dec" -K '+cmaKey+' "'+CMA+"/EXTRACTED/" + ld + "/" + bkup + "/" + foldParams[am]+'" "'+CMA + "/" + ld + "/" + cmaAID + "/" + bkup + "/" +foldParams[am]+'"')
                 os.system("psvimg-create.exe -m "+'"'+CMA+"/EXTRACTED/" +ld+"/"+ bkup+"/"+foldParams[am]+'.psvmd-dec" -K '+cmaKey+' "'+CMA+"/EXTRACTED/" + ld + "/" + bkup + "/" + foldParams[am]+'" "'+CMA + "/" + ld + "/" + cmaAID + "/" + bkup + "/" +foldParams[am]+'"')
+                am -= 1
         if not os.path.exists(CMA + "/" + ld + "/" + cmaAID + "/" + bkup + "/sce_sys"):
             print("Copying Folder: " + CMA + "/EXTRACTED/" + ld + "/"+bkup+"/sce_sys To: "+ CMA + "/" + ld + "/" + cmaAID + "/" + bkup + "/sce_sys")
             shutil.copytree(CMA + "/EXTRACTED/" + ld + "/"+bkup+"/sce_sys" , CMA + "/" + ld + "/" + cmaAID + "/" + bkup + "/sce_sys")
