@@ -27,4 +27,6 @@ I also have a few features planned such as:
 
 2. Whitelist Hack EasyInstaller
 
+3. Some sort of progress bar/indicator
+
 
