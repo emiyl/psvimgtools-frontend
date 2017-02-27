@@ -34,55 +34,7 @@ import defs
 
 
 def auto():
-    ##GET AID FROM QCMA CONFIG
-    if sys.platform.__contains__("linux"):
-        home = expanduser("~")
-        text_file = open(home + "/.config/codestation/qcma.conf", "r")
-        aid = text_file.read()
-        aid = aid.splitlines()[7]
-        aid = aid[14:]
-        text_file.close()
-        print "AID: " + aid
-    if sys.platform.__contains__("win"):
-        import _winreg
-        qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, "Software\codestation\qcma")
-        aid = _winreg.QueryValueEx(qcma, "lastAccountId")
-        aid = aid[0]
-        print "AID: " + aid
-        _winreg.closeKey()
-    ##GET ACCOUNT NAME FROM QCMA CONFIG
-    if sys.platform.__contains__("linux"):
-        home = expanduser("~")
-        text_file = open(home + "/.config/codestation/qcma.conf", "r")
-        acc = text_file.read()
-        acc = acc.splitlines()[8]
-        acc = acc[13:]
-        text_file.close()
-        print "Account Name: " + acc
-    if sys.platform.__contains__("win"):
-        import _winreg
-        qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, "Software\codestation\qcma")
-        acc = _winreg.QueryValueEx(qcma, "lastOnlineId")
-        acc = acc[0]
-        print "Account Name: " + acc
-        _winreg.closeKey()
-
-    import urllib
-    print "Downloading Key From: " + "http://cma.henkaku.xyz/?aid=" + aid
-    urllib.urlretrieve("http://cma.henkaku.xyz/?aid=" + aid, "tempKey.html")
-    key = defs.getKey()
-    print "CMA Key: " + key
-    text_file = open("keys/" + acc, "w+")
-    text_file.write(key)
-    text_file.close()
-    text_file = open("accounts/" + acc, "w+")
-    text_file.write(aid)
-    text_file.close()
-    import account
-    account.close_window(root)
-    tkMessageBox.showinfo(title="Thank You!", message="Account: " + acc + " [" + aid + "] Was Registered.")
-    import accMgr
-    accMgr.vp_start_gui()
+    defs.autoAccount()
     sys.stdout.flush()
 
 

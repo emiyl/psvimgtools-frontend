@@ -10,6 +10,8 @@ import tkMessageBox
 
 from os.path import expanduser
 
+import defs
+
 try:
     from Tkinter import *
 except ImportError:
@@ -25,32 +27,10 @@ except ImportError:
 
 def auto():
     import cmaDir
-    if sys.platform.__contains__("linux"):
-            home = expanduser("~")
-            text_file = open(home+"/.config/codestation/qcma.conf", "r")
-            line = text_file.read()
-            line = line.splitlines()[1]
-            line = line[9:]
-            text_file.close()
-
-            text_file = open("cmadir.txt", "w+")
-            text_file.write(line)
-            text_file.close()
-            print "CMA Dir: " + line
-            cmaDir.close_window(root)
-            tkMessageBox.showinfo(title="Cma Directory",message="Detected: ["+line+"]!")
-
-    if sys.platform.__contains__("win"):
-        import _winreg
-        qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, "Software\codestation\qcma")
-        path = _winreg.QueryValueEx(qcma, "appsPath")
-        print "CMA Dir: " + path[0]
-        text_file = open("cmadir.txt", "w+")
-        text_file.write(path[0])
-        text_file.close()
-        _winreg.closeKey()
-        cmaDir.close_window(root)
-        tkMessageBox.showinfo(title="Cma Directory", message="Detected: [" + path + "]!")
+    defs.autoCMA()
+    path = defs.getCmaDir()
+    cmaDir.close_window(root)
+    tkMessageBox.showinfo(title="Cma Directory", message="Detected: [" + path + "]!")
 
 
 
