@@ -73,11 +73,11 @@ def browse():
                                                                                "Directory")
         outputFolder = tkFileDialog.askdirectory(title="Output Folder")
         if sys.platform.__contains__("linux"):
-            print("Executing: ./psvimg-extract -K "+cmaKey+" "+filename+" "+ outputFolder)
-            os.system("./psvimg-extract -K " + cmaKey + " " + filename + " " + outputFolder)
+            print("Executing: ./psvimg-extract -K "+cmaKey+' "'+filename+'" "'+ outputFolder+'"')
+            os.system("./psvimg-extract -K "+cmaKey+' "'+filename+'" "'+ outputFolder+'"')
         elif sys.platform.__contains__("win"):
-            print("Executing: psvimg-extract.exe -K "+cmaKey+" "+filename+" "+ outputFolder)
-            os.system("psvimg-extract.exe -K " + cmaKey + " " + filename + " " + outputFolder)
+            print("Executing: psvimg-extract.exe -K "+cmaKey+' "'+filename+'" "'+ outputFolder+'"')
+            os.system("psvimg-extract.exe -K "+cmaKey+' "'+filename+'" "'+ outputFolder+'"')
         tkMessageBox.showinfo(title="File Selection",message="Extraction Complete!")
         openFolder(outputFolder)
     elif filename.endswith(".psvmd"):
@@ -85,11 +85,11 @@ def browse():
                                                                                "Save The Decrypted Output")
         outputFile = tkFileDialog.asksaveasfilename(title="Save As")
         if sys.platform.__contains__("linux"):
-            print("Executing: ./psvmd-decrypt -K "+cmaKey+" "+filename+" "+ outputFile)
-            os.system("./psvmd-decrypt -K "+cmaKey+" "+filename+" "+ outputFile)
+            print("Executing: ./psvmd-decrypt -K "+cmaKey+' "'+filename+'" "'+ outputFile+'"')
+            os.system("./psvmd-decrypt -K "+cmaKey+' "'+filename+'" "'+ outputFile+'"')
         elif sys.platform.__contains__("win"):
-            print("Executing: psvmd-decrypt.exe -K "+cmaKey+" "+filename+" "+ outputFile)
-            os.system("psvmd-decrypt.exe -K "+cmaKey+" "+filename+" "+ outputFile)
+            print("Executing: psvmd-decrypt.exe -K "+cmaKey+' "'+filename+'" "'+ outputFile+'"')
+            os.system("psvmd-decrypt.exe -K "+cmaKey+' "'+filename+'" "'+ outputFile+'"')
         tkMessageBox.showinfo(title="File Selection", message="Extraction Complete!")
         openFolder(outputFile+"/..")
 
