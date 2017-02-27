@@ -35,6 +35,11 @@ import defs
 
 def auto():
     defs.autoAccount()
+    import account
+    account.close_window(root)
+    tkMessageBox.showinfo(title="Account Reigstered.",message="Account Registered")
+    import accMgr
+    accMgr.vp_start_gui()
     sys.stdout.flush()
 
 
