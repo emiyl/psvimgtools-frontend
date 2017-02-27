@@ -34,10 +34,10 @@ def set_Tk_var():
 
 if sys.platform.__contains__('linux'):
     def openFolder(path):
-        subprocess.check_call(['xdg-open', path])
+        os.system('xdg-open "'+path+'"')
 elif sys.platform.__contains__("win"):
     def openFolder(path):
-        subprocess.check_call(['explorer', path])
+        os.system('explorer.exe "'+path+'"')
 
 
 
