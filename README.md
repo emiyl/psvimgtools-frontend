@@ -30,7 +30,5 @@ I also have a few features planned such as:
 3. Some sort of progress bar/indicator
 
 
-Before you ask:
-  No this doesnt enable piracy, (except for epsp..)
-  No this isnt goint to lead to a 3.63 spoof for games or PSN.
+For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt goint to lead to a 3.63 spoof for games or PSN.
 
