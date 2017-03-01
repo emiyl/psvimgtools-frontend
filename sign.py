@@ -114,7 +114,10 @@ class Sign_Backup:
         self.Button4 = Button(top)
         self.Button4.place(relx=0.01, rely=0.94, height=26, width=87)
         self.Button4.configure(activebackground='#d9d9d9')
-        self.Button4.configure(command=lambda : sign_support.expBkup(defs.getTitleID(self.backupList.get(ACTIVE))))
+        if sign_support.getLoad() != "SYSTEM":
+            self.Button4.configure(command=lambda : sign_support.expBkup(defs.getTitleID(self.backupList.get(ACTIVE))))
+        else:
+            self.Button4.configure(command=lambda: sign_support.expBkup(self.backupList.get(ACTIVE)))
         self.Button4.configure(text='Edit Backup')
         self.Button4.configure(width=87)
 
