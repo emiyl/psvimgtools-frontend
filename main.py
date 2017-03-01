@@ -76,13 +76,13 @@ class PSVImgTools:
         self.Button2.place(relx=0.07, rely=0.29, height=26, width=127)
         self.Button2.configure(activebackground="#d9d9d9")
         self.Button2.configure(command=main_support.bkupMgr)
-        self.Button2.configure(text='''Backup Mannager''')
+        self.Button2.configure(text='''Backup Manager''')
 
         self.Button3 = Button(self.Labelframe1)
         self.Button3.place(relx=0.07, rely=0.47, height=26, width=127)
         self.Button3.configure(activebackground="#d9d9d9")
         self.Button3.configure(command=main_support.accMan)
-        self.Button3.configure(text='''Account Mannager''')
+        self.Button3.configure(text='''Account Manager''')
 
         self.Label3 = Label(self.Labelframe1)
         self.Label3.place(relx=0.07, rely=0.65, height=48, width=126)

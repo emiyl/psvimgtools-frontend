@@ -28,7 +28,7 @@ def vp_start_gui():
     root.mainloop()
 
 w = None
-def create_Backup_Mannager(root, *args, **kwargs):
+def create_Backup_Mannager(root, *args, **kwargs): ##*manager
     '''Starting point when module is imported by another program.'''
     global w, w_win, rt
     rt = root
@@ -63,7 +63,7 @@ class Backup_Mannager:
         self.Labelframe1.place(relx=0.06, rely=0.0, relheight=0.96
                 , relwidth=0.88)
         self.Labelframe1.configure(relief=GROOVE)
-        self.Labelframe1.configure(text='''Backup Mannager''')
+        self.Labelframe1.configure(text='''Backup Manager''')
         self.Labelframe1.configure(width=150)
 
         self.unsign = Button(self.Labelframe1)
