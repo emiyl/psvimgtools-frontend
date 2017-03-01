@@ -76,7 +76,8 @@ def patch(backup):
     print "Executing "+sqlQuery+" To app.db!"
     appDatabase.executescript(sqlQuery)
     appDatabase.close()
-    tkMessageBox.showinfo(title="WHITELISTER",message="BACKUP PATCHED, ENJOY YOUR WHITELIST HACK :P")
+    sign_support.goSign(account, "SYSTEM", backup, True)
+    tkMessageBox.showinfo(title="WHITELISTER",message="Backup Patched! Restore Backup '"+backup+"' To Hack Your Whitelist")
     easyInstallers.close_window(root)
     easyInstallers.vp_start_gui()
 
