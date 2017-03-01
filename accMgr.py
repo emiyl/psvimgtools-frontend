@@ -45,7 +45,7 @@ def create_Account_Mannager(root, *args, **kwargs):
     accMgr_support.init(w, top, *args, **kwargs)
     return (w, top)
 
-def destroy_Account_Mannager():
+def destroy_Account_Mannager(): ##Spelling error i know, but i dont know what would happen if anything would break if i changed
     global w
     w.destroy()
     w = None
@@ -71,7 +71,7 @@ class Account_Mannager:
             [('selected', _compcolor), ('active',_ana2color)])
 
         top.geometry("600x450+520+158")
-        top.title("Account Mannager")
+        top.title("Account Manager")
         top.configure(highlightcolor="black")
 
 
