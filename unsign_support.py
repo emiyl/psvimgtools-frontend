@@ -169,7 +169,8 @@ def goUnsign(cmaBackup, CMA):
             print 'Executing: psvmd-decrypt.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvmd-dec"'
             os.system('psvmd-decrypt.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvmd-dec"')
         print 'Copying File: ' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf' + ' To: ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvinf'
-        shutil.copy(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf', CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvinf')
+        if os.path.exists(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf'):
+            shutil.copy(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf', CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvinf')
     if resign == False:
         tkMessageBox.showinfo(title='Extract', message='Extraction Complete!')
         print 'Opening Folder: ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup
