@@ -49,7 +49,7 @@ def patch(backup):
     sign_support.goSign(account,"PGAME",backup,True)
     print "Copying Savedata To "+CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"
     if not os.path.exists(CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"):
-        shutil.copytree(defs.getWorkingDir() + "/easyinstallers/ARK/ARK_01234",CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_0123")
+        shutil.copytree(defs.getWorkingDir() + "/easyinstallers/ARK/ARK_01234",CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234")
     import easyInstallers
     tkMessageBox.showinfo(title="ARK Easy Installer",message="ARK Backup Created! (Note: Icon will be the same as base game)")
     easyInstallers.close_window(root)
