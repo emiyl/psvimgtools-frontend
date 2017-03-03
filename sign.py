@@ -84,13 +84,19 @@ class Sign_Backup:
         self.Button2 = Button(top)
         self.Button2.place(relx=0.13, rely=0.94, height=26, width=107)
         self.Button2.configure(activebackground='#d9d9d9')
-        self.Button2.configure(command=lambda : sign_support.delBkup(defs.getTitleID(self.backupList.get(ACTIVE))))
+        if sign_support.getLoad() != "SYSTEM":
+            self.Button2.configure(command=lambda : sign_support.delBkup(defs.getTitleID(self.backupList.get(ACTIVE))))
+        elif sign_support.getLoad() == "SYSTEM":
+            self.Button2.configure(command=lambda: sign_support.delBkup(self.backupList.get(ACTIVE)))
         self.Button2.configure(text='Delete Backup')
         self.Button2.configure(width=107)
         self.Button3 = Button(top)
         self.Button3.place(relx=0.87, rely=0.94, height=26, width=87)
         self.Button3.configure(activebackground='#d9d9d9')
-        self.Button3.configure(command=lambda : sign_support.sign(defs.getTitleID(self.backupList.get(ACTIVE))))
+        if sign_support.getLoad() != "SYSTEM":
+            self.Button3.configure(command=lambda : sign_support.sign(defs.getTitleID(self.backupList.get(ACTIVE))))
+        elif sign_support.getLoad() == "SYSTEM":
+            self.Button3.configure(command=lambda: sign_support.sign(self.backupList.get(ACTIVE)))
         self.Button3.configure(text='Sign & Pack')
         self.Button3.configure(width=87)
         a = 0
@@ -116,7 +122,7 @@ class Sign_Backup:
         self.Button4.configure(activebackground='#d9d9d9')
         if sign_support.getLoad() != "SYSTEM":
             self.Button4.configure(command=lambda : sign_support.expBkup(defs.getTitleID(self.backupList.get(ACTIVE))))
-        else:
+        elif sign_support.getLoad() == 'SYSTEM':
             self.Button4.configure(command=lambda: sign_support.expBkup(self.backupList.get(ACTIVE)))
         self.Button4.configure(text='Edit Backup')
         self.Button4.configure(width=87)

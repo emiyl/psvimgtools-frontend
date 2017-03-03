@@ -4,9 +4,11 @@ import os
 import sys
 from symbol import import_from
 import defs
+import easyinstallers.Whitelister.main as Whitelister
 import easyinstallers.ARK.main as ARK
 import easyinstallers.HiddenApps.main as HiddenApps
 import easyinstallers.VHBL.main as VHBL
+import easyinstallers.UriCaller.main as UriCaller
 try:
     from Tkinter import *
 except ImportError:
@@ -31,6 +33,11 @@ def install(plugin):
         VHBL.vp_start_gui()
     elif plugin == 'HiddenApps':
         HiddenApps.run()
+    elif plugin == 'Whitelister':
+        Whitelister.vp_start_gui()
+    elif plugin == 'UriCaller':
+        UriCaller.vp_start_gui()
+
     sys.stdout.flush()
 
 
