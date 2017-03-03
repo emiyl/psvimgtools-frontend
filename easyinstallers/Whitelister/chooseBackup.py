@@ -73,7 +73,7 @@ def patch(backup):
     dbPath = CMA+"/EXTRACTED/SYSTEM/"+backup+"/ur0_shell/db/app.db"
     print "Opening: "+dbPath
     appDatabase = sqlite3.connect(dbPath)
-    print "Executing "+sqlQuery+" To app.db!"
+    print "Executing "+sqlQuery+"To app.db!"
     appDatabase.executescript(sqlQuery)
     appDatabase.close()
     sign_support.goSign(account, "SYSTEM", backup, True)
