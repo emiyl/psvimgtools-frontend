@@ -97,14 +97,13 @@ if CMA != "":
     print("Check OK All Required Files Where Found/Created")
 
 
-print("Testing 64 Bit.")
+print("Checking For 64-Bit")
 is_64bits = sys.maxsize > 2**32
 
 if is_64bits == 0:
-    tkMessageBox.showinfo(title="Error 007", message="PSVImgTools Only Works On 64-Bit Operating Systems.")
-    quit()
-
-print("Test OK!")
+    print("Running in 32-Bit mode.")
+else:
+    print("Test OK!")
 print("Running OS Check")
 if sys.platform.__contains__("linux"):
     print "Test OK!, sys.platform: "+sys.platform
@@ -118,6 +117,5 @@ else:
     tkMessageBox.showinfo(title="Error 009", message="Your OS Is Not Supported!")
     quit()
 
-quit()
-
+sys.exit()
 
