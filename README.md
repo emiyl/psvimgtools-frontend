@@ -17,18 +17,17 @@ Now i think i should mention some features i have for this:
 
 3. Extract and Create Backup Files
 
-4. EasyInstallers, Enables you to easily install, Hidden Applications, ARK-2 and VHBL i do plan on adding more options to this later.
+4. EasyInstallers, Enables you to easily install, Hidden Applications, ARK-2, VHBL Whitelist Hack, And URICaller i do plan on adding more options to this later.
 
 5. Account Mannager, save multiple accounts's AID, and KEY's
 
+6. Reading Param.SFO File To display backup NAME instead of TITLEID
+
 I also have a few features planned such as:
 
-1. Reading Param.SFO File To display backup NAME instead of TITLEID
+1. Some sort of progress bar/indicator
 
-2. Whitelist Hack EasyInstaller
-
-3. Some sort of progress bar/indicator
-
+2. Remove 'Topics' app Easyinstalelr
 
 For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt goint to lead to a 3.63 spoof for games or PSN.
 
