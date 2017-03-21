@@ -47,4 +47,7 @@ If your problem is something other than these, please open an issue on this gith
 For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt going to lead to a 3.63 spoof for games or PSN.
 you cannot run vita homebrew with this (only psp) hidden applications and uricaller dont acturally execute any applications.
 
+2. The titles of games are not displayed correctly
 
+Known bug allready only seems to effect some computers and i cant seem to replicate the bug.
+it doesnt acturally effect functionality though. it will still work..
