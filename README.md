@@ -29,6 +29,22 @@ I also have a few features planned such as:
 
 2. Remove 'Topics' app Easyinstaller
 
+
+Common Problems:
+1. It doesnt open
+
+This could be for a whole lot of reasons.
+but the two most common reasons ive seen is the following:
+you dont have QCMA installed.
+if you do have QCMA installed, the SECOUND most common reason:
+is that you have never connected your PSVita with QCMA before
+just plug in the USB Cable and wait for it to detect it, (you can also connect via WIFI)
+
+it should also be noted that it might cause a problem if it is your first time running the program however you do not have internet access (or access to cma.henkaku.xyz) this might cause a problem like this as well.
+
+If your problem is something other than these, please open an issue on this github.
+
 For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt going to lead to a 3.63 spoof for games or PSN.
 you cannot run vita homebrew with this (only psp) hidden applications and uricaller dont acturally execute any applications.
+
 
