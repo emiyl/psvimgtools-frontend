@@ -25,6 +25,7 @@ print ("Checking CMADir.txt")
 if not os.path.exists("cmadir.txt"):
     print "CMADir Doesnt Exist, Obtaining From QCMA!"
     defs.autoCMA()
+
 else:
     print("CHECK OK")
 

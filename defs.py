@@ -4,7 +4,10 @@ import platform
 import subprocess
 import ConfigParser
 import sys
+import tkMessageBox
 from os.path import expanduser
+from twisted.python.win32 import WindowsError
+
 
 def getCmaDir():
     text = text_file = open('cmadir.txt', 'r')
@@ -65,23 +68,36 @@ def isApp(dir):
 def autoCMA():
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
-        configParser = ConfigParser.RawConfigParser()
-        configFilePath = home + '/.config/codestation/qcma.conf'
-        configParser.read(configFilePath)
-        line = configParser.get('General', 'appsPath')
-        text_file = open('cmadir.txt', 'w+')
-        text_file.write(line)
-        text_file.close()
-        print 'CMA Dir: ' + line
+        if os.path.exists(home + '/.config/codestation/qcma.conf'):
+            configParser = ConfigParser.RawConfigParser()
+            configFilePath = home + '/.config/codestation/qcma.conf'
+            configParser.read(configFilePath)
+            line = configParser.get('General', 'appsPath')
+            text_file = open('cmadir.txt', 'w+')
+            text_file.write(line)
+            text_file.close()
+            print 'CMA Dir: ' + line
+        else:
+            print("QCMA Is Not Installed.")
+            tkMessageBox.showinfo(title='ERROR 204', message='QCMA Is Not Installed.')
+            sys.exit()
+
     if sys.platform.__contains__('win'):
         import _winreg
-        qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
-        path = _winreg.QueryValueEx(qcma, 'appsPath')
+        try:
+            qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
+            path = _winreg.QueryValueEx(qcma, 'appsPath')
+        except:
+            print("QCMA Is Not Installed.")
+            tkMessageBox.showinfo(title='ERROR 205', message='QCMA Is Not Installed.')
+            sys.exit()
+
         print 'CMA Dir: ' + path[0]
         text_file = open('cmadir.txt', 'w+')
         text_file.write(path[0])
         text_file.close()
         _winreg.CloseKey(qcma)
+
 
 
 def autoAccount():
@@ -90,12 +106,24 @@ def autoAccount():
         configParser = ConfigParser.RawConfigParser()
         configFilePath = home + '/.config/codestation/qcma.conf'
         configParser.read(configFilePath)
-        aid = configParser.get('General', 'lastAccountId')
-        print 'AID: ' + aid
+        if configParser.has_option("General",'lastAccountId'):
+            aid = configParser.get('General', 'lastAccountId')
+            print 'AID: ' + aid
+        else:
+            print "No Account Found!"
+            tkMessageBox.showinfo(title='ERROR 208', message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
+            sys.exit()
+
+
     if sys.platform.__contains__('win'):
         import _winreg
-        qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
-        aid = _winreg.QueryValueEx(qcma, 'lastAccountId')
+        try:
+            qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
+            aid = _winreg.QueryValueEx(qcma, 'lastAccountId')
+        except:
+            print "No Account Found!"
+            tkMessageBox.showinfo(title='ERROR 209',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
+            sys.exit()
         aid = aid[0]
         print 'AID: ' + aid
         _winreg.CloseKey(qcma)
@@ -104,13 +132,23 @@ def autoAccount():
         configParser = ConfigParser.RawConfigParser()
         configFilePath = home + '/.config/codestation/qcma.conf'
         configParser.read(configFilePath)
-        acc = configParser.get('General', 'lastOnlineId')
-        print 'Account Name: ' + acc
+        if configParser.has_option("General", 'lastOnlineId'):
+            acc = configParser.get('General', 'lastOnlineId')
+            print 'Account Name: ' + acc
+        else:
+            print "No Account Found!"
+            tkMessageBox.showinfo(title='ERROR 209',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
+            sys.exit()
     if sys.platform.__contains__('win'):
         import _winreg
         qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
-        acc = _winreg.QueryValueEx(qcma, 'lastOnlineId')
-        acc = acc[0]
+        try:
+            acc = _winreg.QueryValueEx(qcma, 'lastOnlineId')
+            acc = acc[0]
+        except WindowsError:
+            print "No Account Found!"
+            tkMessageBox.showinfo(title='ERROR 210',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
+            sys.exit()
         print 'Account Name: ' + acc
         _winreg.CloseKey(qcma)
     import urllib
