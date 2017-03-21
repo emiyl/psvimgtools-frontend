@@ -6,7 +6,7 @@ import ConfigParser
 import sys
 import tkMessageBox
 from os.path import expanduser
-from twisted.python.win32 import WindowsError
+
 
 
 def getCmaDir():
