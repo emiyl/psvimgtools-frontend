@@ -141,7 +141,7 @@ def goUnsign(cmaBackup, CMA):
             foldParams = ['game', 'license']
             am = 1
         while am != -1:
-            if sys.platform.__contains__('linux'):
+            if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
                 print 'Executing: ./psvimg-extract -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '"'
                 os.system('./psvimg-extract -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '"')
                 print 'Executing: ./psvmd-decrypt -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '.psvmd-dec"'
@@ -158,7 +158,7 @@ def goUnsign(cmaBackup, CMA):
             print 'Copying Folder: ' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/sce_sys' + ' To: ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/sce_sys'
             shutil.copytree(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/sce_sys', CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/sce_sys')
     elif load == 'SYSTEM':
-        if sys.platform.__contains__('linux'):
+        if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
             print 'Executing: ./psvimg-extract -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '"'
             os.system('./psvimg-extract -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '"')
             print 'Executing: ./psvmd-decrypt -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvmd-dec"'

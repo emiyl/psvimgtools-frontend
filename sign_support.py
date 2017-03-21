@@ -163,7 +163,7 @@ def goSign(acc, ld, bkup, resign):
             foldParams = ['game', 'license']
             am = 1
         while am != -1:
-            if sys.platform.__contains__('linux'):
+            if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
                 print 'Executing: ./psvimg-create -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"'
                 os.system('./psvimg-create -m "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"')
                 am -= 1
@@ -176,7 +176,7 @@ def goSign(acc, ld, bkup, resign):
             print 'Copying Folder: ' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/sce_sys To: ' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/sce_sys'
             shutil.copytree(CMA + '/EXTRACTED/' + ld + '/' + bkup + '/sce_sys', CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/sce_sys')
     elif ld == 'SYSTEM':
-        if sys.platform.__contains__('linux'):
+        if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
             print 'Executing: ./psvimg-create -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '"'
             os.system('./psvimg-create -m "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '"')
         elif sys.platform.__contains__('win'):

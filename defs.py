@@ -5,6 +5,7 @@ import subprocess
 import ConfigParser
 import sys
 import tkMessageBox
+import bplistlib
 from os.path import expanduser
 
 
@@ -66,6 +67,18 @@ def isApp(dir):
 
 
 def autoCMA():
+    if sys.platform.__contains__('darwin'):
+        home = expanduser('~')
+        if os.path.exists(home + '/Library/Preferences/com.codestation.qcma.plist'):
+            cmaFile = bplistlib.readPlist(home + '/Library/Preferences/com.codestation.qcma.plist')
+            text_file = open('cmadir.txt', 'w+')
+            text_file.write(cmaFile['appsPath'])
+            text_file.close()
+            print 'CMA Dir: ' + cmaFile['appsPath']
+        else:
+            print("QCMA Is Not Installed.")
+            tkMessageBox.showinfo(title='ERROR 300', message='QCMA Is Not Installed.')
+            sys.exit()
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
         if os.path.exists(home + '/.config/codestation/qcma.conf'):
@@ -101,6 +114,17 @@ def autoCMA():
 
 
 def autoAccount():
+    if sys.platform.__contains__('darwin'):
+        home = expanduser('~')
+        if os.path.exists(home + '/Library/Preferences/com.codestation.qcma.plist'):
+            cmaFile = bplistlib.readPlist(home + '/Library/Preferences/com.codestation.qcma.plist')
+            aid = cmaFile['lastAccountId']
+            print 'AID: ' + aid
+        else:
+            print "No Account Found!"
+            tkMessageBox.showinfo(title='ERROR 208', message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
+            sys.exit()
+
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
         configParser = ConfigParser.RawConfigParser()
@@ -127,6 +151,16 @@ def autoAccount():
         aid = aid[0]
         print 'AID: ' + aid
         _winreg.CloseKey(qcma)
+    if sys.platform.__contains__('darwin'):
+        home = expanduser('~')
+        if os.path.exists(home + '/Library/Preferences/com.codestation.qcma.plist'):
+            cmaFile = bplistlib.readPlist(home + '/Library/Preferences/com.codestation.qcma.plist')
+            acc = cmaFile['lastAccountId']
+            print 'Account Name: ' + acc
+        else:
+            print "No Account Found!"
+            tkMessageBox.showinfo(title='ERROR 208', message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
+            sys.exit()
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
         configParser = ConfigParser.RawConfigParser()

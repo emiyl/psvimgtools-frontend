@@ -4,6 +4,8 @@ import cmaDir_support
 import defs
 import main
 
+# Requires BPlistLib -- https://github.com/tungol/bplistlib
+
 
 import os
 import fnmatch
@@ -111,6 +113,10 @@ if sys.platform.__contains__("linux"):
     print("Starting GUI")
     main.vp_start_gui()
 elif sys.platform.__contains__("win"):
+    print "Test OK!, sys.platform: " + sys.platform
+    print("Starting GUI")
+    main.vp_start_gui()
+elif sys.platform.__contains__("darwin"):
     print "Test OK!, sys.platform: " + sys.platform
     print("Starting GUI")
     main.vp_start_gui()
