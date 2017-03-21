@@ -29,5 +29,6 @@ I also have a few features planned such as:
 
 2. Remove 'Topics' app Easyinstaller
 
-For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt goint to lead to a 3.63 spoof for games or PSN.
+For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt going to lead to a 3.63 spoof for games or PSN.
+you cannot run vita homebrew with this (only psp) hidden applications and uricaller dont acturally execute any applications.
 
