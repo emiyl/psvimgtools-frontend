@@ -15,9 +15,7 @@ import fnmatch
 
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
-    args[0]
-except IndexError:
-    if args[0] == "m":
+ if args[0] == "m":
         print "Running in MANUAL mode."
         print "In this mode you have to setup the application yourself."
         print "The only reason i added this mode is because people keep getting errors where\nthe application opens and then closes immediatley."
@@ -50,6 +48,9 @@ except IndexError:
         print "Closing Text File."
         raw_input("All done! the application will now close.. just open it again and it SHOULD work..\nif it doesnt work. please just post an issue on github dont spam my comments\nAlso write more than just 'it doesnt work' thats.. not very usefull.")
         sys.exit()
+except IndexError:
+    print "Running In AUTO Mode"
+   
 
 if not os.path.exists("accounts"):
     os.makedirs("accounts")
