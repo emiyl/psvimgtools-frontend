@@ -1,5 +1,8 @@
+import getopt
 import sys
 import tkMessageBox
+import urllib
+
 import cmaDir_support
 import defs
 import main
@@ -10,6 +13,43 @@ import main
 import os
 import fnmatch
 
+opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
+try:
+    args[0]
+except IndexError:
+    if args[0] == "m":
+        print "Running in MANUAL mode."
+        print "In this mode you have to setup the application yourself."
+        print "The only reason i added this mode is because people keep getting errors where\nthe application opens and then closes immediatley."
+        print "So yea you just need to enter a few things: "
+        PSNName = raw_input("What is your PSN Account Name? ")
+        aid = raw_input("What is your AID/PSID? ")
+        CmaDir = raw_input("Where is your QCMA Backups Directory? ")
+        print "Downloading key.. - Make sure you are connected to the internet and have access to cma.henkaku.xyz!"
+        urllib.urlretrieve('http://cma.henkaku.xyz/?aid=' + aid, 'tempKey.html')
+        print "Key Downloaded."
+        key = defs.getKey()
+        print "Set 'key' to defs.getKey"
+        text_file = open('keys/' + PSNName, 'w+')
+        print "Opening text file keys/"+PSNName
+        text_file.write(key)
+        print "Writing " + key + " to file.."
+        text_file.close()
+        print "Closing text file.."
+        text_file = open('accounts/' + PSNName, 'w+')
+        print "Opening text file accounts/" + PSNName
+        text_file.write(aid)
+        print "Writing "+aid +" to file.."
+        text_file.close()
+        print "Closing text file."
+        text_file = open('cmadir.txt', 'w+')
+        print "Opening cmadir.txt"
+        text_file.write(CmaDir)
+        print "Writing "+CmaDir+" To File"
+        text_file.close()
+        print "Closing Text File."
+        raw_input("All done! the application will now close.. just open it again and it SHOULD work..\nif it doesnt work. please just post an issue on github dont spam my comments\nAlso write more than just 'it doesnt work' thats.. not very usefull.")
+        sys.exit()
 
 if not os.path.exists("accounts"):
     os.makedirs("accounts")
@@ -37,6 +77,7 @@ if os.listdir("accounts") == [] and os.listdir("keys") == []:
     defs.autoAccount()
 else:
     print("CHECK OK")
+
 
 
 
