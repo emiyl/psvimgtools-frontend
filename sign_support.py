@@ -30,7 +30,7 @@ if sys.platform.__contains__('linux'):
         os.system('xdg-open "' + path + '"')
 
 
-elif sys.platform.__contains__('win'):
+if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
         os.system('explorer.exe "' + path + '"')
@@ -167,7 +167,7 @@ def goSign(acc, ld, bkup, resign):
                 print 'Executing: ./psvimg-create -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"'
                 os.system('./psvimg-create -m "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"')
                 am -= 1
-            elif sys.platform.__contains__('win'):
+            if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
                 print 'Executing: psvimg-create.exe -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"'
                 os.system('psvimg-create.exe -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"')
                 am -= 1
@@ -179,7 +179,7 @@ def goSign(acc, ld, bkup, resign):
         if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
             print 'Executing: ./psvimg-create -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '"'
             os.system('./psvimg-create -m "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '"')
-        elif sys.platform.__contains__('win'):
+        if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
             print 'Executing: psvimg-create.exe -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '"'
             os.system('psvimg-create.exe -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '"')
         print 'Copying File: ' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '.psvinf To: ' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + bkup + '.psvinf'

@@ -16,7 +16,7 @@ if sys.platform.__contains__('linux'):
         os.system('xdg-open "' + path + '"')
 
 
-elif sys.platform.__contains__('win'):
+if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
         os.system('explorer.exe "' + path + '"')
@@ -66,7 +66,7 @@ def browse():
         if sys.platform.__contains__('linux'):
             print 'Executing: ./psvimg-extract -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"'
             os.system('./psvimg-extract -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"')
-        elif sys.platform.__contains__('win'):
+        if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
             print 'Executing: psvimg-extract.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"'
             os.system('psvimg-extract.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"')
         tkMessageBox.showinfo(title='File Selection', message='Extraction Complete!')
@@ -77,7 +77,7 @@ def browse():
         if sys.platform.__contains__('linux'):
             print 'Executing: ./psvmd-decrypt -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"'
             os.system('./psvmd-decrypt -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"')
-        elif sys.platform.__contains__('win'):
+        if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
             print 'Executing: psvmd-decrypt.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"'
             os.system('psvmd-decrypt.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"')
         tkMessageBox.showinfo(title='File Selection', message='Extraction Complete!')
@@ -147,7 +147,7 @@ def goUnsign(cmaBackup, CMA):
                 print 'Executing: ./psvmd-decrypt -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '.psvmd-dec"'
                 os.system('./psvmd-decrypt -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '.psvmd-dec"')
                 am -= 1
-            elif sys.platform.__contains__('win'):
+            if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
                 print 'Executing: psvimg.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvimg ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am]
                 os.system('psvimg-extract.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '"')
                 print 'Executing: psvmd-decrypt.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '.psvmd-dec"'
@@ -163,7 +163,7 @@ def goUnsign(cmaBackup, CMA):
             os.system('./psvimg-extract -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '"')
             print 'Executing: ./psvmd-decrypt -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvmd-dec"'
             os.system('./psvmd-decrypt -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvmd-dec"')
-        elif sys.platform.__contains__('win'):
+        if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
             print 'Executing: psvimg-extract.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '"'
             os.system('psvimg-extract.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '"')
             print 'Executing: psvmd-decrypt.exe -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvmd" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvmd-dec"'

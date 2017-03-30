@@ -154,7 +154,7 @@ if sys.platform.__contains__("linux"):
     print "Test OK!, sys.platform: "+sys.platform
     print("Starting GUI")
     main.vp_start_gui()
-elif sys.platform.__contains__("win"):
+elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
     print "Test OK!, sys.platform: " + sys.platform
     print("Starting GUI")
     main.vp_start_gui()

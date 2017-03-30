@@ -95,7 +95,7 @@ def autoCMA():
             tkMessageBox.showinfo(title='ERROR 204', message='QCMA Is Not Installed.')
             sys.exit()
 
-    if sys.platform.__contains__('win'):
+    if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
         import _winreg
         try:
             qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
@@ -139,7 +139,7 @@ def autoAccount():
             sys.exit()
 
 
-    if sys.platform.__contains__('win'):
+    if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
         import _winreg
         try:
             qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
