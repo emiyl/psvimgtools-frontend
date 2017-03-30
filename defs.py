@@ -173,7 +173,7 @@ def autoAccount():
             print "No Account Found!"
             tkMessageBox.showinfo(title='ERROR 209',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
             sys.exit()
-    if sys.platform.__contains__('win'):
+    if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
         import _winreg
         qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
         try:
