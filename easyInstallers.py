@@ -91,6 +91,7 @@ class Easy_Installers:
                     self.backupList.insert(a, items)
 
 
+
 class AutoScroll(object):
     """Configure the scrollbars for a widget."""
 

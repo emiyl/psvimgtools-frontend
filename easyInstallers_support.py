@@ -2,6 +2,7 @@
 import fnmatch
 import os
 import sys
+import tkMessageBox
 from symbol import import_from
 import defs
 import easyinstallers.Whitelister.main as Whitelister
@@ -9,6 +10,9 @@ import easyinstallers.ARK.main as ARK
 import easyinstallers.HiddenApps.main as HiddenApps
 import easyinstallers.VHBL.main as VHBL
 import easyinstallers.UriCaller.main as UriCaller
+import easyinstallers.PSMRuntime.main as PSMRuntime
+import easyinstallers.Skype.main as Skype
+import easyinstallers.RemoveFeatured.main as RemoveFeatured
 try:
     from Tkinter import *
 except ImportError:
@@ -28,7 +32,10 @@ def set_Tk_var():
 
 def install(plugin):
     if plugin == 'ARK':
-        ARK.vp_start_gui()
+        if tkMessageBox.askyesno(title="3.65?",message="ARK Has been patched on firmwares 3.65 and above. \nDo you want to continue?"):
+            {
+                ARK.vp_start_gui()
+            }
     elif plugin == 'VHBL':
         VHBL.vp_start_gui()
     elif plugin == 'HiddenApps':
@@ -37,6 +44,13 @@ def install(plugin):
         Whitelister.vp_start_gui()
     elif plugin == 'UriCaller':
         UriCaller.vp_start_gui()
+    elif plugin == 'PSMRuntime':
+        PSMRuntime.run()
+    elif plugin == 'Skype':
+        Skype.run()
+    elif plugin == 'RemoveFeatured':
+        RemoveFeatured.vp_start_gui()
+
 
     sys.stdout.flush()
 
