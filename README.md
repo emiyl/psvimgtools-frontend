@@ -33,6 +33,11 @@ I also have a few features planned such as:
 
 4. Supporting Other CMA's (DevkitCMA, OpenCMA, and OfficalCMA)
 
+Features i want, but arent possible yet:
+
+1. Creating Backup Files From .pkg Files
+
+2. Option To Decrypt PFS.
 
 Common Problems:
 1. It doesnt open
