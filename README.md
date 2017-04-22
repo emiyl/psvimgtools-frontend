@@ -29,6 +29,10 @@ I also have a few features planned such as:
 
 2. Remove 'Topics' app Easyinstaller
 
+3. A Server Where You Can Upload/Download DRMFree Backup Files.
+
+4. Supporting Other CMA's (DevkitCMA, OpenCMA, and OfficalCMA)
+
 
 Common Problems:
 1. It doesnt open
