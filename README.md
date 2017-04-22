@@ -17,7 +17,7 @@ Now i think i should mention some features i have for this:
 
 3. Extract and Create Backup Files
 
-4. EasyInstallers, Enables you to easily install, Hidden Applications, ARK-2, VHBL Whitelist Hack, And URICaller i do plan on adding more options to this later.
+4. EasyInstallers, Enables you to easily install, Hidden Applications, ARK-2, VHBL Whitelist Hack, URICaller, PSM Runtime Skype, and Remove The Featured App.
 
 5. Account Mannager, save multiple accounts's AID, and KEY's
 
@@ -25,9 +25,7 @@ Now i think i should mention some features i have for this:
 
 I also have a few features planned such as:
 
-1. Some sort of progress bar/indicator
-
-2. Remove 'Topics' app Easyinstaller
+1. Some sort of progress bar/indicator (This will be hard to do. as extracting / repacking is handled by PSVIMGTOOLS CLI)
 
 3. A Server Where You Can Upload/Download DRMFree Backup Files.
 
