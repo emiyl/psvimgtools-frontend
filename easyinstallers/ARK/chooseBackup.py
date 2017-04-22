@@ -47,9 +47,14 @@ def patch(backup):
     shutil.copy(defs.getWorkingDir() + "/easyinstallers/ARK/patch/PBOOT.PBP",CMA + "/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/")
     print "Signing to: " +account
     sign_support.goSign(account,"PGAME",backup,True)
-    print "Copying Savedata To "+CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"
-    if not os.path.exists(CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"):
-        shutil.copytree(defs.getWorkingDir() + "/easyinstallers/ARK/ARK_01234",CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234")
+    if tkMessageBox.askyesno(title="OneMenu?",message="Would you like to use ONEMENU?"):
+        print "Copying Savedata To "+CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"
+        if not os.path.exists(CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234"):
+            shutil.copytree(defs.getWorkingDir() + "/easyinstallers/ARK/ONEMENU",CMA+"/PSAVEDATA/"+defs.getAid(account)+"/ARK_01234")
+    else:
+        print "Copying Savedata To " + CMA + "/PSAVEDATA/" + defs.getAid(account) + "/ARK_01234"
+        if not os.path.exists(CMA + "/PSAVEDATA/" + defs.getAid(account) + "/ARK_01234"):
+            shutil.copytree(defs.getWorkingDir() + "/easyinstallers/ARK/ARK_01234",CMA + "/PSAVEDATA/" + defs.getAid(account) + "/ARK_01234")
     import easyInstallers
     tkMessageBox.showinfo(title="ARK Easy Installer",message="ARK Backup Created! (Note: Icon will be the same as base game)")
     easyInstallers.close_window(root)
