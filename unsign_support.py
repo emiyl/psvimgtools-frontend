@@ -2,6 +2,7 @@
 import os
 import subprocess
 import sys
+from sys import *
 import tkFileDialog
 import tkMessageBox
 from tkFileDialog import askopenfiles
@@ -10,6 +11,7 @@ import accSelect
 import accSelect_support
 import backupType
 import backupType_support
+from shutil import *
 if sys.platform.__contains__('linux'):
 
     def openFolder(path):
@@ -52,39 +54,21 @@ def getLoad():
     return load
 
 
-def browse():
-    import unsign
-    unsign.close_window(root)
-    filename = tkFileDialog.askopenfilename(title='Select file', filetypes=[('All Backup Files', '*.psvimg , *.psvmd'), ('Psvita Image Files', '*.psvimg'), ('PSVita MetaData Files', '*.psvmd')])
-    key = open('keys/' + account, 'r')
-    cmaKey = key.read()
-    aid = open('accounts/' + account, 'r')
-    cmaAID = aid.read()
-    if filename.endswith('.psvimg'):
-        tkMessageBox.showinfo(title='File Selection', message='File ' + filename + ' Selected, Please Specifiy An Output Directory')
-        outputFolder = tkFileDialog.askdirectory(title='Output Folder')
-        if sys.platform.__contains__('linux'):
-            print 'Executing: ./psvimg-extract -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"'
-            os.system('./psvimg-extract -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"')
-        if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
-            print 'Executing: psvimg-extract.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"'
-            os.system('psvimg-extract.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFolder + '"')
-        tkMessageBox.showinfo(title='File Selection', message='Extraction Complete!')
-        openFolder(outputFolder)
-    elif filename.endswith('.psvmd'):
-        tkMessageBox.showinfo(title='File Selection', message='File ' + filename + ' Selected, Please Specifiy Where To Save The Decrypted Output')
-        outputFile = tkFileDialog.asksaveasfilename(title='Save As')
-        if sys.platform.__contains__('linux'):
-            print 'Executing: ./psvmd-decrypt -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"'
-            os.system('./psvmd-decrypt -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"')
-        if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
-            print 'Executing: psvmd-decrypt.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"'
-            os.system('psvmd-decrypt.exe -K ' + cmaKey + ' "' + filename + '" "' + outputFile + '"')
-        tkMessageBox.showinfo(title='File Selection', message='Extraction Complete!')
-        openFolder(outputFile + '/..')
 
 
-def goUnsign(cmaBackup, CMA):
+
+def goUnsign(cmaBackup, CMA,cmbackup=False):
+    if cmbackup == True:
+            location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')])
+            try:
+                print 'location: '+location
+            except TypeError:
+                tkMessageBox.showerror(title="Error 302",message="ERROR: You did not select a location to create the .cmbackup!")
+                import sys
+                sys.exit()
+
+
+
     global am
     global foldParams
     import unsign
@@ -171,7 +155,7 @@ def goUnsign(cmaBackup, CMA):
         print 'Copying File: ' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf' + ' To: ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvinf'
         if os.path.exists(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf'):
             shutil.copy(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf', CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvinf')
-    if resign == False:
+    if resign == False and cmbackup == False:
         tkMessageBox.showinfo(title='Extract', message='Extraction Complete!')
         print 'Opening Folder: ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup
         openFolder(CMA + '/EXTRACTED/' + load + '/' + cmaBackup)
@@ -182,6 +166,19 @@ def goUnsign(cmaBackup, CMA):
         accSelect_support.resignVars(cmaBackup, load)
         backupType_support.action('resign2')
         accSelect.vp_start_gui()
+    elif cmbackup == True:
+        print 'Creating .cmbackup'
+        print 'Writing load.txt'
+        loadtext = open(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/load.txt', 'w')
+        loadtext.write(load)
+        loadtext.close()
+        print 'Writing TitleID.txt'
+        loadtext = open(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/TitleID.txt', 'w')
+        loadtext.write(cmaBackup)
+        loadtext.close()
+        print 'Writing .cmbackup file..'
+        defs.zip(src=CMA + '/EXTRACTED/'+load+'/'+cmaBackup,dst=location)
+        tkMessageBox.showinfo(title='CMBACKUP', message='.cmbackup Created.')
     sys.stdout.flush()
 
 

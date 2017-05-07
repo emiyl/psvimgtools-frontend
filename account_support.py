@@ -76,7 +76,7 @@ def addaccount(aid, acc):
 
 
 def question():
-    tkMessageBox.showinfo(title="CMA Key",message="Your AID Is The Random Numbers QCMA Puts Your Backups Inside.")
+    tkMessageBox.showinfo(title="CMA Key",message="Your AID is the name of the random numbers and letters folder your CMA backups are stored in.")
     sys.stdout.flush()
 
 

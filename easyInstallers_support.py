@@ -13,6 +13,7 @@ import easyinstallers.UriCaller.main as UriCaller
 import easyinstallers.PSMRuntime.main as PSMRuntime
 import easyinstallers.Skype.main as Skype
 import easyinstallers.RemoveFeatured.main as RemoveFeatured
+import easyinstallers.CmBackup.main as cmbackup
 try:
     from Tkinter import *
 except ImportError:
@@ -32,10 +33,8 @@ def set_Tk_var():
 
 def install(plugin):
     if plugin == 'ARK':
-        if tkMessageBox.askyesno(title="3.65?",message="ARK Has been patched on firmwares 3.65 and above. \nDo you want to continue?"):
-            {
+        if tkMessageBox.askyesno(title="3.65?",message="ARK WILL NOT WORK ON 3.65+ \nDo you still want to continue?"):
                 ARK.vp_start_gui()
-            }
     elif plugin == 'VHBL':
         VHBL.vp_start_gui()
     elif plugin == 'HiddenApps':
@@ -50,7 +49,8 @@ def install(plugin):
         Skype.run()
     elif plugin == 'RemoveFeatured':
         RemoveFeatured.vp_start_gui()
-
+    elif plugin == 'CmBackup':
+        cmbackup.vp_start_gui()
 
     sys.stdout.flush()
 

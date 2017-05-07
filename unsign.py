@@ -104,10 +104,10 @@ class Unsign_Backup:
         self.Button1.configure(text='Unsign & Extract')
         if unsign_support.getResign() == False:
             self.Button2 = Button(top)
-            self.Button2.place(relx=0.01, rely=0.94, height=26, width=77)
+            self.Button2.place(relx=0.01, rely=0.94, height=26, width=120)
             self.Button2.configure(activebackground='#d9d9d9')
-            self.Button2.configure(command=unsign_support.browse)
-            self.Button2.configure(text='Browse')
+            self.Button2.configure(command=lambda : unsign_support.goUnsign(defs.getTitleID(self.backupList.get(ACTIVE)), CMA,True))
+            self.Button2.configure(text='Create .cmbackup')
 
 
 class AutoScroll(object):

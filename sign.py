@@ -127,6 +127,13 @@ class Sign_Backup:
         self.Button4.configure(text='Edit Backup')
         self.Button4.configure(width=87)
 
+        self.Button9 = Button(top)
+        self.Button9.place(relx=0.28, rely=0.94, height=26, width=115)
+        self.Button9.configure(activebackground='#d9d9d9')
+        self.Button9.configure(command=sign_support.cmbackup)
+        self.Button9.configure(text='Install .cmbackup')
+        self.Button9.configure(width=107)
+
 
 class AutoScroll(object):
     """Configure the scrollbars for a widget."""

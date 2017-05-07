@@ -3,7 +3,10 @@ import os
 import subprocess
 import sys
 import shutil
+import tkFileDialog
 import tkMessageBox
+import zipfile
+
 import accSelect
 import accSelect_support
 import defs
@@ -34,7 +37,31 @@ if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
         os.system('explorer.exe "' + path + '"')
-
+def cmbackup():
+    cmfile = tkFileDialog.askopenfilename(title='Select cmbackup', filetypes=[('Unsigned CMA Backup Files', '*.cmbackup')])
+    zf = zipfile.ZipFile(cmfile)
+    try:
+        zf.extract(member="load.txt",path="temp")
+        zf.extract(member="TitleID.txt",path="temp")
+    except KeyError:
+        tkMessageBox.showerror(title="Error 094",message="Invalid .cmbackup!")
+    zf.close()
+    load = open('temp/load.txt', 'r')
+    loadtype = load.read()
+    load.close()
+    backupfile = open('temp/TitleID.txt', 'r')
+    CMABACKUP = backupfile.read()
+    backupfile.close()
+    os.remove("temp/load.txt")
+    os.remove("temp/TitleID.txt")
+    os.removedirs("temp")
+    defs.extractZip(src=cmfile,dst=defs.getCmaDir() + '/EXTRACTED/'+loadtype+"/"+CMABACKUP)
+    os.remove(defs.getCmaDir() + '/EXTRACTED/'+loadtype+"/"+CMABACKUP+"/"+"load.txt")
+    os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + "/" + "TitleID.txt")
+    accSelect_support.pushVars(CMABACKUP, loadtype)
+    import sign
+    sign.close_window(root)
+    accSelect.vp_start_gui()
 
 def delBkup(backup):
     print 'Deleting Folder: ' + defs.getCmaDir() + '/EXTRACTED/' + load + '/' + backup

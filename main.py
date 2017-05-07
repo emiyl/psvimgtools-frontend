@@ -88,7 +88,7 @@ class PSVImgTools:
         self.Label3.place(relx=0.07, rely=0.65, height=48, width=126)
         self.Label3.configure(activebackground="#f9f9f9")
         self.Label3.configure(text='''PSVIMGTOOLS By:
-Molecule
+Molecule/Yifanlu
 Gui By: SilicaAndPina''')
 
 

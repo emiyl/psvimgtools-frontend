@@ -5,6 +5,7 @@ import urllib
 
 import cmaDir_support
 import defs
+import easyinstallers.CmBackup.main as CMBACKUP
 import main
 
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
@@ -13,6 +14,12 @@ import main
 import os
 import fnmatch
 
+import sign_support
+
+print "/--PSVIMGTOOLS-FRONTEND V0.3.1--\ "
+print '|  GUI BY SILICAANDPINA!        |'
+print '|  CLI BY YIFANLU / MOLECULE    |'
+print '\-------------------------------/'
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
  if args[0] == "m":
@@ -50,6 +57,13 @@ try:
         sys.exit()
 except IndexError:
     print "Running In AUTO Mode"
+
+try:
+    print "Extracting CMBackup File"
+    if args[0] != "":
+        CMBACKUP.vp_start_gui(args[0])
+except IndexError:
+    print ""
    
 
 if not os.path.exists("accounts"):
