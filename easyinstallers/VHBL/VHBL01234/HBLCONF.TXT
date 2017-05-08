@@ -3,7 +3,7 @@
 
 # hb_folder 
 #   The menu displays the contents of this folder at startup
-hb_folder=ms0:/PSP/VHBL/
+hb_folder=ms0:/PSP/SAVEDATA/
 
 # return_to_xmb_on_exit
 # If set to 1, returns directly to XMB when exiting a homebrew instead of going back to the HBL menu
