@@ -143,6 +143,12 @@ def main(filename):
         str2hex(sect.rfu001),
         if psflabels[le16(sect.label_off):].split('\x00')[0] == "TITLE":
             TITLE = psfdata[le32(sect.data_off):].split('\x00\x00')[0]
+            if TITLE.__contains__("("):
+                TITLE = TITLE.replace("(","[")
+            if TITLE.__contains__(")"):
+                TITLE = TITLE.replace(")","]")
+            ##Found a bug where if it wouldnt dump the Gravity Rush Demo because it was called "Gravity Rush (DEMO)"
+            ##Which conficts with the way i find titleid's
             return TITLE
         index += PsfSec.size
         sect = PsfSec(psf[index:])
