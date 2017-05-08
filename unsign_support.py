@@ -176,6 +176,12 @@ def goUnsign(cmaBackup, CMA,cmbackup=False):
         loadtext = open(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/TitleID.txt', 'w')
         loadtext.write(cmaBackup)
         loadtext.close()
+        print 'Checking for savedata..'
+        if os.path.exists(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/savedata'):
+            savedata = tkMessageBox.askyesno(title="Savedata",message="This Backup Contains Savedata, Would you like to pack that into the .CMBACKUP File?\nSavedata could potentailly contain personal infomation!!")
+            if savedata == False:
+                shutil.rmtree(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/savedata')
+                os.remove(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/savedata.psvmd-dec')
         print 'Writing .cmbackup file..'
         defs.zip(src=CMA + '/EXTRACTED/'+load+'/'+cmaBackup,dst=location)
         tkMessageBox.showinfo(title='CMBACKUP', message='.cmbackup Created.')
