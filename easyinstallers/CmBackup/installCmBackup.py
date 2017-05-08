@@ -1,4 +1,5 @@
 import os
+import shutil
 import tkFileDialog
 import tkMessageBox
 import zipfile
@@ -35,6 +36,11 @@ def cmbackupextract(account,file=""):
     defs.extractZip(src=cmfile, dst=defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP)
     os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + "/" + "load.txt")
     os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + "/" + "TitleID.txt")
+    if os.path.exists(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata') == True:
+        savedata = tkMessageBox.askyesno(title="Savedata",message="This .cmbackup contains savedata, would you like to use this savedata?\nYou may have problems with trophy eligiby if you do.")
+        if savedata == False:
+            shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata')
+            os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata.psvmd-dec')
     sign_support.goSign(account,loadtype,CMABACKUP,True)
     tkMessageBox.showinfo(title="Done!",message="Done!, Backup Created.")
     if file != "":
