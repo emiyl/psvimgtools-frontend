@@ -22,6 +22,8 @@ Heres a list of features i currently have:
 
 6. Reading Param.SFO File To display backup NAME instead of TITLEID
 
+7. CMBACKUP Files (These are kinda like what .pkgs was with package installer 2.0 only done right and not in a way that will confuse everyone!)
+
 I also have a few features planned such as:
 
 1. Some sort of progress bar/indicator (This will be hard to do. as extracting / repacking is handled by PSVIMGTOOLS CLI)
