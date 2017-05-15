@@ -46,7 +46,8 @@ def install(plugin):
     elif plugin == 'PSMRuntime':
         PSMRuntime.run()
     elif plugin == 'Skype':
-        Skype.run()
+        if tkMessageBox.askyesno(title="3.65?",message="SKYPE WILL NOT WORK ON 3.65+ \nDo you still want to continue?"):
+                Skype.run()
     elif plugin == 'RemoveFeatured':
         RemoveFeatured.vp_start_gui()
     elif plugin == 'CmBackup':

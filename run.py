@@ -16,7 +16,7 @@ import fnmatch
 
 import sign_support
 
-print "/--PSVIMGTOOLS-FRONTEND V0.3.1--\ "
+print "/--PSVIMGTOOLS-FRONTEND V0.4--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'
@@ -56,15 +56,24 @@ try:
         raw_input("All done! the application will now close.. just open it again and it SHOULD work..\nif it doesnt work. please just post an issue on github dont spam my comments\nAlso write more than just 'it doesnt work' thats.. not very usefull.")
         sys.exit()
 except IndexError:
-    print "Running In AUTO Mode"
+    print ""
 
 try:
-    print "Extracting CMBackup File"
+    if args[0] == "s":
+        print "Skipping Initial Check.."
+        print "Problems may occur when doing this..."
+        print "Running GUI.."
+        main.vp_start_gui()
+except IndexError:
+    print ""
+try:
     if args[0] != "":
+        print "Extracting CMBackup File"
         CMBACKUP.vp_start_gui(args[0])
 except IndexError:
     print ""
-   
+
+print "Running inital check"
 
 if not os.path.exists("accounts"):
     os.makedirs("accounts")
@@ -73,7 +82,7 @@ if not os.path.exists("keys"):
 
 a = 0
 
-print "Setting Up Plugins."
+print "Setting Up EasyInstallers."
 for root, dir, files in os.walk("*"):
     for items in fnmatch.filter(dir, "*"):
         sys.path.append(items)
@@ -170,10 +179,16 @@ if sys.platform.__contains__("linux"):
     main.vp_start_gui()
 elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
     print "Test OK!, sys.platform: " + sys.platform
+    print "Registering .cmbackup as a known filetype.."
+    print "Executing: assoc .cmbackup=CmbackupFile"
+    os.system("assoc .cmbackup=CmbackupFile")
+    print 'Executing: ftype CmbackupFile="'+defs.getWorkingDir()+'"'
+    os.system('ftype CmbackupFile="'+defs.getWorkingDir()+'"')
     print("Starting GUI")
     main.vp_start_gui()
 elif sys.platform.__contains__("darwin"):
     print "Test OK!, sys.platform: " + sys.platform
+    print "MacOS Is currently in BETA! Please report any bugs you may find."
     print("Starting GUI")
     main.vp_start_gui()
 else:

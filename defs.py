@@ -10,6 +10,10 @@ import bplistlib
 from os.path import expanduser
 
 
+def getHomeDir():
+    from os.path import expanduser
+    home = expanduser("~")
+    return home
 
 def getCmaDir():
     text = text_file = open('cmadir.txt', 'r')
@@ -77,9 +81,10 @@ def autoCMA():
             text_file.close()
             print 'CMA Dir: ' + cmaFile['appsPath']
         else:
-            print("QCMA Is Not Installed.")
-            tkMessageBox.showinfo(title='ERROR 300', message='QCMA Is Not Installed.')
-            sys.exit()
+            print "Cannot find CMADir..."
+            tkMessageBox.showinfo(title="CMADIR", message="Could not find the CMA Backups Directory.")
+            import cmaDir
+            cmaDir.vp_start_gui()
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
         if os.path.exists(home + '/.config/codestation/qcma.conf'):
@@ -92,25 +97,51 @@ def autoCMA():
             text_file.close()
             print 'CMA Dir: ' + line
         else:
-            print("QCMA Is Not Installed.")
-            tkMessageBox.showinfo(title='ERROR 204', message='QCMA Is Not Installed.')
-            sys.exit()
+            print "Cannot find CMADir..."
+            tkMessageBox.showinfo(title="CMADIR", message="Could not find the CMA Backups Directory.")
+            import cmaDir
+            cmaDir.vp_start_gui()
 
     if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
         import _winreg
         try:
+            global CMAFOLDER
             qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
             path = _winreg.QueryValueEx(qcma, 'appsPath')
+            CMAFOLDER = path[0]
+            _winreg.CloseKey(qcma)
         except:
             print("QCMA Is Not Installed.")
-            tkMessageBox.showinfo(title='ERROR 205', message='QCMA Is Not Installed.')
-            sys.exit()
+            print "Checking Default Location "+getHomeDir()+"\Documents\PS Vita"
+            if os.path.exists("Checking Default Location "+getHomeDir()+"\Documents\PS Vita"):
+                print "Directory Found! Setting As CMA APPS DIR "
+                CMAFOLDER = getHomeDir()+"\My Documents\PS Vita"
+            elif os.path.exists("Checking Default Location "+getHomeDir()+"\My Documents\PS Vita"):
+                print "Directory Found! Setting As CMA Apps DIR"
+                CMAFOLDER = getHomeDir()+"\My Documents\PS Vita"
+                print "Legacy OS Detected, Documents Folder Is Called 'My Documents' PSVIMGTOOLS may not work correctly!"
+            else:
+                print "Folder not found checking for SONY CMA..."
+                try:
+                    cma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, '\\SOFTWARE\\Sony Corporation\\Content Manager Assistant\\Settings')
+                    path = _winreg.QueryValueEx(cma, 'ApplicationHomePath')
+                    CMAFOLDER = path[0]
+                    _winreg.CloseKey(cma)
+                    print "---------------------WARNING---------------------"
+                    print "SONY CMA IS NOT FULLY SUPPORTED, \nAND IT ALSO REQUIRES THE LATEST FIRMWARE"
+                    print "I HIGHLY RECOMMEND USING QCMA INSTEAD!"
+                except:
+                    print "Cannot find CMADir..."
+                    tkMessageBox.showinfo(title="CMADIR",message="Could not find the CMA Backups Directory.")
+                    import cmaDir
+                    cmaDir.vp_start_gui()
 
-        print 'CMA Dir: ' + path[0]
+
+        print 'CMA Dir: ' + CMAFOLDER
         text_file = open('cmadir.txt', 'w+')
-        text_file.write(path[0])
+        text_file.write(CMAFOLDER)
         text_file.close()
-        _winreg.CloseKey(qcma)
+
 
 
 
@@ -123,8 +154,9 @@ def autoAccount():
             print 'AID: ' + aid
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='ERROR 208', message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
-            sys.exit()
+            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            import account
+            account.vp_start_gui()
 
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
@@ -136,8 +168,9 @@ def autoAccount():
             print 'AID: ' + aid
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='ERROR 208', message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
-            sys.exit()
+            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            import account
+            account.vp_start_gui()
 
 
     if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
@@ -147,8 +180,9 @@ def autoAccount():
             aid = _winreg.QueryValueEx(qcma, 'lastAccountId')
         except:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='ERROR 209',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
-            sys.exit()
+            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            import account
+            account.vp_start_gui()
         aid = aid[0]
         print 'AID: ' + aid
         _winreg.CloseKey(qcma)
