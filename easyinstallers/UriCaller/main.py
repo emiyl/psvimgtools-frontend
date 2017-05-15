@@ -107,8 +107,6 @@ class Account_Selector:
             for items in fnmatch.filter(files, "*"):
                 a += 1
                 self.accountList.insert(a, items)
-        if a == 1:
-            writeAcc(self.accountList.get(ACTIVE))
         self.Button1 = Button(top)
         self.Button1.place(relx=0.58, rely=0.93, height=26, width=117)
         self.Button1.configure(activebackground="#d9d9d9")

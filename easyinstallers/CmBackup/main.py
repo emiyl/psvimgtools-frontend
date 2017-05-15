@@ -30,6 +30,9 @@ def vp_start_gui(file=""):
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
+    if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+        import defs
+        root.iconbitmap(bitmap=defs.getWorkingDir()+'\icon.ico')
     top = Account_Selector (root)
     accSelect_support.init(root, top)
     root.mainloop()
