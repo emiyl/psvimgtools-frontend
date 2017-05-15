@@ -131,10 +131,21 @@ def autoCMA():
                     print "SONY CMA IS NOT FULLY SUPPORTED, \nAND IT ALSO REQUIRES THE LATEST FIRMWARE"
                     print "I HIGHLY RECOMMEND USING QCMA INSTEAD!"
                 except:
-                    print "Cannot find CMADir..."
-                    tkMessageBox.showinfo(title="CMADIR",message="Could not find the CMA Backups Directory.")
-                    import cmaDir
-                    cmaDir.vp_start_gui()
+                    print "Checking for DEVKITCMA"
+                    try:
+                        cma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,'\\SOFTWARE\\SCE\\PSP2\\Services\\Content Manager Assistant for PlayStation(R)Vita DevKit\\Settings')
+                        path = _winreg.QueryValueEx(cma, 'ApplicationHomePath')
+                        CMAFOLDER = path[0]
+                        _winreg.CloseKey(cma)
+                        print "---------------------WARNING---------------------"
+                        print "DEVKITCMA IS NOT FULLY SUPPORTED, \nAND IT ALSO REQUIRES THE LATEST FIRMWARE"
+                        print "I HIGHLY RECOMMEND USING QCMA INSTEAD!"
+                    except:
+                        print "Cannot find CMADir..."
+                        tkMessageBox.showinfo(title="CMADIR", message="Could not find the CMA Backups Directory.")
+                        import cmaDir
+                        cmaDir.vp_start_gui()
+
 
 
         print 'CMA Dir: ' + CMAFOLDER
@@ -194,8 +205,9 @@ def autoAccount():
             print 'Account Name: ' + acc
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='ERROR 208', message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
-            sys.exit()
+            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            import account
+            account.vp_start_gui()
     if sys.platform.__contains__('linux'):
         home = expanduser('~')
         configParser = ConfigParser.RawConfigParser()
@@ -206,18 +218,20 @@ def autoAccount():
             print 'Account Name: ' + acc
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='ERROR 209',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
-            sys.exit()
+            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            import account
+            account.vp_start_gui()
     if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
         import _winreg
         qcma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'Software\\codestation\\qcma')
         try:
             acc = _winreg.QueryValueEx(qcma, 'lastOnlineId')
             acc = acc[0]
-        except WindowsError:
+        except:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='ERROR 210',message='Last Connected Account Could Not Be Found!\nCommon Fix Is to connect your PSVita with QCMA And then try again.')
-            sys.exit()
+            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            import account
+            account.vp_start_gui()
         print 'Account Name: ' + acc
         _winreg.CloseKey(qcma)
     import urllib
