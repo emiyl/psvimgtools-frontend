@@ -50,11 +50,11 @@ def checkForUpdate(currentVersion):
             if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
                 if get64Bit():
                     downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win64-setup.exe","install.exe")
-                    execfile("install.exe")
+                    os.system("start install.exe")
                     sys.exit()
                 else:
                     downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win32-setup.exe","install.exe")
-                    execfile("install.exe")
+                    os.system("start install.exe")
                     sys.exit()
             else:
                 webbrowser.open_new_tab("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/latest")
@@ -182,7 +182,7 @@ def autoCMA():
             else:
                 print "Folder not found checking for SONY CMA..."
                 try:
-                    cma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, '\\SOFTWARE\\Sony Corporation\\Content Manager Assistant\\Settings')
+                    cma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER, 'SOFTWARE\\Sony Corporation\\Content Manager Assistant\\Settings')
                     path = _winreg.QueryValueEx(cma, 'ApplicationHomePath')
                     CMAFOLDER = path[0]
                     _winreg.CloseKey(cma)

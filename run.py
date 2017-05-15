@@ -188,7 +188,7 @@ elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"
     print "Registering .cmbackup as a known filetype.."
     print "Executing: assoc .cmbackup=CmbackupFile"
     os.system("assoc .cmbackup=CmbackupFile")
-    print 'Executing: ftype CmbackupFile="'+defs.getWorkingDir()+'"'
+    print 'Executing: ftype CmbackupFile="'+defs.getWorkingDir()+'\run.exe"'
     os.system('ftype CmbackupFile="'+defs.getWorkingDir()+'"')
     print("Starting GUI")
     main.vp_start_gui()
