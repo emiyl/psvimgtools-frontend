@@ -5,6 +5,8 @@
 #    Feb 25, 2017 07:14:36 PM
 import sys
 
+import defs
+
 try:
     from Tkinter import *
 except ImportError:
@@ -23,6 +25,9 @@ def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
+    if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+        import defs
+        root.iconbitmap(bitmap=defs.getWorkingDir()+'\icon.ico')
     top = Cma_Directory (root)
     cmaDir_support.init(root, top)
     root.mainloop()
