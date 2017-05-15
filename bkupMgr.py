@@ -5,6 +5,8 @@
 #    Feb 26, 2017 03:37:04 PM
 import sys
 
+import defs
+
 try:
     from Tkinter import *
 except ImportError:
@@ -23,6 +25,8 @@ def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
     root = Tk()
+    if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+        root.iconbitmap(bitmap=defs.getWorkingDir()+'\icon.ico')
     top = Backup_Mannager (root)
     bkupMgr_support.init(root, top)
     root.mainloop()

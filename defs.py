@@ -1,4 +1,4 @@
-
+import json
 import os
 import platform
 import shutil
@@ -6,8 +6,67 @@ import subprocess
 import ConfigParser
 import sys
 import tkMessageBox
+import urllib
+import webbrowser
+from pprint import pprint
+
 import bplistlib
 from os.path import expanduser
+
+import requests
+
+global latestVersion
+
+def downloadWithProgressBar(link, file_name):
+    with open(file_name, "wb") as f:
+            print "Downloading %s" % file_name
+            response = requests.get(link, stream=True)
+            total_length = response.headers.get('content-length')
+
+            if total_length is None: # no content length header
+                f.write(response.content)
+            else:
+                dl = 0
+                total_length = int(total_length)
+                for data in response.iter_content(chunk_size=4096):
+                    dl += len(data)
+                    f.write(data)
+                    done = int(50 * dl / total_length)
+                    sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )
+                    sys.stdout.flush()
+
+def checkForUpdate(currentVersion):
+    urllib.urlretrieve('https://api.github.com/repos/SilicaAndPina/psvimgtools-frontend/releases/latest', 'tmp.json')
+    with open('tmp.json') as data_file:
+        data = json.load(data_file)
+        latestVersion = data["tag_name"]
+        data_file.close()
+    os.remove("tmp.json")
+    print 'Latest Version Is: ' + latestVersion
+    print 'Current Version Is: ' + currentVersion
+    if currentVersion != latestVersion:
+        print "An Update Is Available!"
+        if tkMessageBox.askyesno(title="Update?",message="An Update Is Avalible! \nVersion "+latestVersion+" Would you like to update?"):
+            if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+                if get64Bit():
+                    downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win64-setup.exe","install.exe")
+                    execfile("install.exe")
+                    sys.exit()
+                else:
+                    downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win32-setup.exe","install.exe")
+                    execfile("install.exe")
+                    sys.exit()
+            else:
+                webbrowser.open_new_tab("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/latest")
+            sys.exit()
+    else:
+        print "No Updates Available."
+
+
+
+
+def get64Bit():
+    return sys.maxsize > 2 ** 32
 
 
 def getHomeDir():
@@ -133,12 +192,12 @@ def autoCMA():
                 except:
                     print "Checking for DEVKITCMA"
                     try:
-                        cma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,'\\SOFTWARE\\SCE\\PSP2\\Services\\Content Manager Assistant for PlayStation(R)Vita DevKit\\Settings')
+                        cma = _winreg.OpenKey(_winreg.HKEY_CURRENT_USER,'SOFTWARE\\SCE\\PSP2\\Services\\Content Manager Assistant for PlayStation(R)Vita DevKit\\Settings')
                         path = _winreg.QueryValueEx(cma, 'ApplicationHomePath')
                         CMAFOLDER = path[0]
                         _winreg.CloseKey(cma)
                         print "---------------------WARNING---------------------"
-                        print "DEVKITCMA IS NOT FULLY SUPPORTED, \nAND IT ALSO REQUIRES THE LATEST FIRMWARE"
+                        print "DEVKITCMA IS NOT FULLY SUPPORTED,"
                         print "I HIGHLY RECOMMEND USING QCMA INSTEAD!"
                     except:
                         print "Cannot find CMADir..."

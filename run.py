@@ -15,8 +15,8 @@ import os
 import fnmatch
 
 import sign_support
-
-print "/--PSVIMGTOOLS-FRONTEND V0.4--\ "
+version = "v0.4"
+print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'
@@ -56,7 +56,7 @@ try:
         raw_input("All done! the application will now close.. just open it again and it SHOULD work..\nif it doesnt work. please just post an issue on github dont spam my comments\nAlso write more than just 'it doesnt work' thats.. not very usefull.")
         sys.exit()
 except IndexError:
-    print ""
+    ""
 
 try:
     if args[0] == "s":
@@ -65,15 +65,21 @@ try:
         print "Running GUI.."
         main.vp_start_gui()
 except IndexError:
-    print ""
+    ""
+
 try:
-    if args[0] != "":
+    if args[0] != "" and args[0] != "noUpdateCheck":
         print "Extracting CMBackup File"
         CMBACKUP.vp_start_gui(args[0])
 except IndexError:
-    print ""
+    ""
 
-print "Running inital check"
+try:
+    if args[0] == "noUpdateCheck":
+        print "Skipping Update Check."
+except IndexError:
+    print "Checking for updates"
+    defs.checkForUpdate(version)
 
 if not os.path.exists("accounts"):
     os.makedirs("accounts")

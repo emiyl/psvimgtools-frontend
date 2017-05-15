@@ -21,6 +21,8 @@ def vp_start_gui():
     """Starting point when module is the main routine."""
     global root
     root = Tk()
+    if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+        root.iconbitmap(bitmap=defs.getWorkingDir()+'\icon.ico')
     easyInstallers_support.set_Tk_var()
     top = Easy_Installers(root)
     easyInstallers_support.init(root, top)
