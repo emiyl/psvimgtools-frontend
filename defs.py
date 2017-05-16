@@ -36,31 +36,35 @@ def downloadWithProgressBar(link, file_name):
                     sys.stdout.flush()
 
 def checkForUpdate(currentVersion):
-    urllib.urlretrieve('https://api.github.com/repos/SilicaAndPina/psvimgtools-frontend/releases/latest', 'tmp.json')
-    with open('tmp.json') as data_file:
-        data = json.load(data_file)
-        latestVersion = data["tag_name"]
-        data_file.close()
-    os.remove("tmp.json")
-    print 'Latest Version Is: ' + latestVersion
-    print 'Current Version Is: ' + currentVersion
-    if currentVersion != latestVersion:
-        print "An Update Is Available!"
-        if tkMessageBox.askyesno(title="Update?",message="An Update Is Avalible! \nVersion "+latestVersion+" Would you like to update?"):
-            if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
-                if get64Bit():
-                    downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win64-setup.exe","install.exe")
-                    os.system("start install.exe")
-                    sys.exit()
+    try:
+        urllib.urlretrieve('https://api.github.com/repos/SilicaAndPina/psvimgtools-frontend/releases/latest', 'tmp.json')
+    except: ##EXCEPT NETWORK ERROR -- THX GAMERSREBIRTHD
+        print "Could Not Connect, Skipping Update Check."
+    if os.path.exists('tmp.json'):
+        with open('tmp.json') as data_file:
+            data = json.load(data_file)
+            latestVersion = data["tag_name"]
+            data_file.close()
+        os.remove("tmp.json")
+        print 'Latest Version Is: ' + latestVersion
+        print 'Current Version Is: ' + currentVersion
+        if currentVersion != latestVersion:
+            print "An Update Is Available!"
+            if tkMessageBox.askyesno(title="Update?",message="An Update Is Avalible! \nVersion "+latestVersion+" Would you like to update?"):
+                if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+                    if get64Bit():
+                        downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win64-setup.exe","install.exe")
+                        os.system("start install.exe")
+                        sys.exit()
+                    else:
+                        downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win32-setup.exe","install.exe")
+                        os.system("start install.exe")
+                        sys.exit()
                 else:
-                    downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win32-setup.exe","install.exe")
-                    os.system("start install.exe")
-                    sys.exit()
-            else:
-                webbrowser.open_new_tab("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/latest")
-            sys.exit()
-    else:
-        print "No Updates Available."
+                    webbrowser.open_new_tab("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/latest")
+                sys.exit()
+        else:
+            print "No Updates Available."
 
 
 
