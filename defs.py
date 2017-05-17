@@ -98,13 +98,14 @@ def getKey():
 
 def isPlugin(path):
     import os
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    if os.path.exists(dir_path + '/easyinstallers/' + path + '/main.py'):
+    if os.path.exists(getWorkingDir() + '/easyinstallers/' + path + '/main.py'):
         return True
 
 
 def getWorkingDir():
-    return os.path.dirname(os.path.realpath(__file__))
+    return os.path.dirname(os.path.realpath(sys.argv[0]))
+
+
 
 
 def getAid(account):
