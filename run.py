@@ -15,7 +15,7 @@ import os
 import fnmatch
 
 import sign_support
-version = "v0.4"
+version = "v0.4.1"
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
@@ -188,7 +188,7 @@ elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"
     print "Registering .cmbackup as a known filetype.."
     print "Executing: assoc .cmbackup=CmbackupFile"
     os.system("assoc .cmbackup=CmbackupFile")
-    print 'Executing: ftype CmbackupFile="'+defs.getWorkingDir()+'\run.exe"'
+    print 'Executing: ftype CmbackupFile="'+defs.getWorkingDir()+'\\run.exe"'
     os.system('ftype CmbackupFile="'+defs.getWorkingDir()+'"')
     print("Starting GUI")
     main.vp_start_gui()

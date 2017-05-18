@@ -213,7 +213,7 @@ def autoCMA():
 
 
         print 'CMA Dir: ' + CMAFOLDER
-        text_file = open('cmadir.txt', 'w+')
+        text_file = open(getWorkingDir()+'/cmadir.txt', 'w+')
         text_file.write(CMAFOLDER)
         text_file.close()
 
@@ -303,10 +303,10 @@ def autoAccount():
     urllib.urlretrieve('http://cma.henkaku.xyz/?aid=' + aid, 'tempKey.html')
     key = getKey()
     print 'CMA Key: ' + key
-    text_file = open('keys/' + acc, 'w+')
+    text_file = open(getWorkingDir()+'/keys/' + acc, 'w+')
     text_file.write(key)
     text_file.close()
-    text_file = open('accounts/' + acc, 'w+')
+    text_file = open(getWorkingDir()+'/accounts/' + acc, 'w+')
     text_file.write(aid)
     text_file.close()
 
