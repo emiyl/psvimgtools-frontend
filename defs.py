@@ -79,7 +79,7 @@ def getHomeDir():
     return home
 
 def getCmaDir():
-    text = text_file = open('cmadir.txt', 'r')
+    text = text_file = open(getWorkingDir()+'/cmadir.txt', 'r')
     a = text.read()
     text_file.close()
     return a
@@ -87,12 +87,12 @@ def getCmaDir():
 
 def getKey():
     import os
-    html_file = open('tempKey.html')
+    html_file = open(getWorkingDir()'/tempKey.html')
     line = html_file.read()
     line = line.splitlines()[16]
     line = line[25:]
     html_file.close()
-    os.remove('tempKey.html')
+    os.remove(getWorkingDir()'/tempKey.html')
     return line
 
 
@@ -109,13 +109,13 @@ def getWorkingDir():
 
 
 def getAid(account):
-    aid = open('accounts/' + account, 'r')
+    aid = open(getWorkingDir()'/accounts/' + account, 'r')
     CmaAID = aid.read()
     return CmaAID
 
 
 def getStoredKey(account):
-    key = open('keys/' + account, 'r')
+    key = open(getWorkingDir()'/keys/' + account, 'r')
     CmaKey = key.read()
     return CmaKey
 
