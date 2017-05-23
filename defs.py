@@ -87,12 +87,12 @@ def getCmaDir():
 
 def getKey():
     import os
-    html_file = open(getWorkingDir()'/tempKey.html')
+    html_file = open(getWorkingDir()+'/tempKey.html')
     line = html_file.read()
     line = line.splitlines()[16]
     line = line[25:]
     html_file.close()
-    os.remove(getWorkingDir()'/tempKey.html')
+    os.remove(getWorkingDir()+'/tempKey.html')
     return line
 
 
@@ -109,13 +109,13 @@ def getWorkingDir():
 
 
 def getAid(account):
-    aid = open(getWorkingDir()'/accounts/' + account, 'r')
+    aid = open(getWorkingDir()+'/accounts/' + account, 'r')
     CmaAID = aid.read()
     return CmaAID
 
 
 def getStoredKey(account):
-    key = open(getWorkingDir()'/keys/' + account, 'r')
+    key = open(getWorkingDir()+'/keys/' + account, 'r')
     CmaKey = key.read()
     return CmaKey
 
@@ -335,4 +335,3 @@ def extractZip(src,dst):
     zf = zipfile.ZipFile(src)
     zf.extractall(path=dst)
     zf.close()
-
