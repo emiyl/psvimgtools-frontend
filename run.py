@@ -16,6 +16,7 @@ import fnmatch
 
 import sign_support
 version = "v0.4.1"
+os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'

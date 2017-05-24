@@ -98,7 +98,7 @@ def goUnsign(cmaBackup, CMA,cmbackup=False):
              'license',
              'patch',
              'savedata']
-            am = 4
+            am = 3
         if not os.path.exists(CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/'):
             os.makedirs(CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/')
         while am != -1:
@@ -184,6 +184,8 @@ def goUnsign(cmaBackup, CMA,cmbackup=False):
                 os.remove(CMA + '/EXTRACTED/'+load+'/'+cmaBackup+'/savedata.psvmd-dec')
         print 'Writing .cmbackup file..'
         defs.zip(src=CMA + '/EXTRACTED/'+load+'/'+cmaBackup,dst=location)
+        print "Removing: "+ CMA + '/EXTRACTED/' + load + '/' + cmaBackup
+        shutil.rmtree(CMA + '/EXTRACTED/' + load + '/' + cmaBackup)
         tkMessageBox.showinfo(title='CMBACKUP', message='.cmbackup Created.')
     sys.stdout.flush()
 

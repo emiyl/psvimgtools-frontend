@@ -65,6 +65,8 @@ def cmbackup():
             shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata')
             os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata.psvmd-dec')
     accSelect_support.pushVars(CMABACKUP, loadtype)
+    print "Removing: "+defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP
+    shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP)
     import sign
     sign.close_window(root)
     accSelect.vp_start_gui()
@@ -169,7 +171,7 @@ def goSign(acc, ld, bkup, resign):
              'license',
              'patch',
              'savedata']
-            am = 4
+            am = 3
         if not os.path.exists(CMA + '/' + ld + '/' + cmaAID + '/' + bkup):
             os.makedirs(CMA + '/' + ld + '/' + cmaAID + '/' + bkup)
         while am != -1:
