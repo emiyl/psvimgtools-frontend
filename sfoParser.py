@@ -149,6 +149,7 @@ def main(filename):
                 TITLE = TITLE.replace(")","]")
             ##Found a bug where if it wouldnt dump the Gravity Rush Demo because it was called "Gravity Rush (DEMO)"
             ##Which conficts with the way i find titleid's
+            print "Found: "+TITLE
             return TITLE
         index += PsfSec.size
         sect = PsfSec(psf[index:])

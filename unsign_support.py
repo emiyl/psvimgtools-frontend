@@ -12,6 +12,9 @@ import accSelect_support
 import backupType
 import backupType_support
 from shutil import *
+
+import sfoParser
+
 if sys.platform.__contains__('linux'):
 
     def openFolder(path):
@@ -59,7 +62,8 @@ def getLoad():
 
 def goUnsign(cmaBackup, CMA,cmbackup=False):
     if cmbackup == True:
-            location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')])
+            title=sfoParser.main(CMA + '/' + load + '/' + defs.getAid(account) + '/' + cmaBackup + '/sce_sys/param.sfo')
+            location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile = title)
             try:
                 print 'location: '+location
             except TypeError:

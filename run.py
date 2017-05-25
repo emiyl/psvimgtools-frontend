@@ -15,7 +15,7 @@ import os
 import fnmatch
 
 import sign_support
-version = "v0.4.1"
+version = "v0.4.2"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
