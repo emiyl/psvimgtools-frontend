@@ -42,6 +42,7 @@ def cmbackupextract(account,file=""):
             shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata')
             os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata.psvmd-dec')
     sign_support.goSign(account,loadtype,CMABACKUP,True)
+    shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP)
     tkMessageBox.showinfo(title="Done!",message="Done!, Backup Created.")
     if file != "":
         sys.exit()
