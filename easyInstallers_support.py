@@ -14,6 +14,7 @@ import easyinstallers.PSMRuntime.main as PSMRuntime
 import easyinstallers.Skype.main as Skype
 import easyinstallers.RemoveFeatured.main as RemoveFeatured
 import easyinstallers.CmBackup.main as cmbackup
+import easyinstallers.EmuBubble.main as emububble
 try:
     from Tkinter import *
 except ImportError:
@@ -52,6 +53,8 @@ def install(plugin):
         RemoveFeatured.vp_start_gui()
     elif plugin == 'CmBackup':
         cmbackup.vp_start_gui()
+    elif plugin == 'EmuBubble':
+        emububble.vp_start_gui()
 
     sys.stdout.flush()
 

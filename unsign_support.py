@@ -60,7 +60,7 @@ def getLoad():
 
 
 
-def goUnsign(cmaBackup, CMA,cmbackup=False):
+def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False):
     if cmbackup == True:
             title=sfoParser.main(CMA + '/' + load + '/' + defs.getAid(account) + '/' + cmaBackup + '/sce_sys/param.sfo')
             location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile = title)

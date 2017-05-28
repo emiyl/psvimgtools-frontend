@@ -65,11 +65,11 @@ def cmbackup():
             shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata')
             os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + '/savedata.psvmd-dec')
     accSelect_support.pushVars(CMABACKUP, loadtype)
-    print "Removing: "+defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP
-    shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP)
     import sign
     sign.close_window(root)
     accSelect.vp_start_gui()
+    print "Removing: "+defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP
+    shutil.rmtree(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP)
 
 def delBkup(backup):
     print 'Deleting Folder: ' + defs.getCmaDir() + '/EXTRACTED/' + load + '/' + backup
