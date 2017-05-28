@@ -106,14 +106,18 @@ class New_Toplevel_1:
                 self.Scrolledlistbox1.insert(a,items)
 
         self.Button1 = Button(top)
-        self.Button1.place(relx=0.02, rely=0.91, height=36, width=577)
+        self.Button1.place(relx=0.02, rely=0.91, height=36, width=377)
         self.Button1.configure(activebackground="#d9d9d9")
         self.Button1.configure(text='''Create Bubble''')
-        self.Button1.configure(width=577)
+        self.Button1.configure(width=377)
         self.Button1.configure(command = lambda: emububble_support.createBackup(self.Scrolledlistbox1.get(ACTIVE),account,backup))
 
-
-
+        self.Button2 = Button(top)
+        self.Button2.place(relx=0.65, rely=0.91, height=36, width=197)
+        self.Button2.configure(activebackground="#d9d9d9")
+        self.Button2.configure(command=lambda: emububble_support.folder(self.Scrolledlistbox1.get(ACTIVE)))
+        self.Button2.configure(text='''Open Emulators Folder''')
+        self.Button2.configure(width=197)
 
 
 # The following code is added to facilitate the Scrolled widgets you specified.

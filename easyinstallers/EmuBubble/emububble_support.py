@@ -27,6 +27,8 @@ def createBackup(emulator,backup,account):
     CB.destroy_Unsign_Backup()
 
 
+def folder(dir):
+    defs.openFolder(defs.getWorkingDir()+"/easyinstallers/EmuBubble/FILES/"+dir)
 
 try:
     from Tkinter import *
