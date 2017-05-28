@@ -72,6 +72,16 @@ def checkForUpdate(currentVersion):
 def get64Bit():
     return sys.maxsize > 2 ** 32
 
+if sys.platform.__contains__('linux'):
+
+    def openFolder(path):
+        os.system('xdg-open "' + path + '"')
+
+
+if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
+
+    def openFolder(path):
+        os.system('explorer.exe "' + path + '"')
 
 def getHomeDir():
     from os.path import expanduser
