@@ -1,14 +1,9 @@
 import json
-import os
-import platform
-import shutil
-import subprocess
 import ConfigParser
 import sys
 import tkMessageBox
 import urllib
 import webbrowser
-from pprint import pprint
 
 import bplistlib
 from os.path import expanduser
@@ -38,7 +33,7 @@ def downloadWithProgressBar(link, file_name):
 def checkForUpdate(currentVersion):
     try:
         urllib.urlretrieve('https://api.github.com/repos/SilicaAndPina/psvimgtools-frontend/releases/latest', 'tmp.json')
-    except: ##EXCEPT NETWORK ERROR -- THX GAMERSREBIRTHD
+    except: ##EXCEPT NETWORK ERROR -- THX GAMERSREBIRTHDL
         print "Could Not Connect, Skipping Update Check."
     if os.path.exists('tmp.json'):
         with open('tmp.json') as data_file:
@@ -318,8 +313,21 @@ def autoAccount():
         print 'Account Name: ' + acc
         _winreg.CloseKey(qcma)
     import urllib
-    print 'Downloading Key From: ' + 'http://cma.henkaku.xyz/?aid=' + aid
-    urllib.urlretrieve('http://cma.henkaku.xyz/?aid=' + aid, 'tempKey.html')
+    try:
+        print 'Downloading Key From: ' + 'http://cma.henkaku.xyz/?aid=' + aid
+        urllib.urlretrieve('http://cma.henkaku.xyz/?aid=' + aid, 'tempKey.html')
+    except:
+        print "Failed to connect to: "+'http://cma.henkaku.xyz/?aid=' + aid
+        print "Trying henkaku.me.."
+        try:
+            print 'Downloading Key From: ' + 'http://cma.henkaku.me/?aid=' + aid
+            urllib.urlretrieve('http://cma.henkaku.me/?aid=' + aid, 'tempKey.html')
+        except:
+            print "Failed to connect to: "+'http://cma.henkaku.me/?aid=' + aid
+            print "Could Not Connect, Cannot find CMA Key!"
+            tkMessageBox.showerror(title="Connection Error.",message="Failed to connect to: \nhttp://cma.henkaku.xyz\nThus your CMA Key could not be determined,\nPSVIMGTOOLS will not work without your CMA Key, \nPlease check your connection and try again.")
+            sys.exit()
+
     key = getKey()
     print 'CMA Key: ' + key
     text_file = open(getWorkingDir()+'/keys/' + acc, 'w+')

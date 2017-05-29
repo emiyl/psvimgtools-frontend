@@ -1,26 +1,19 @@
-import getopt
-import sys
-import tkMessageBox
-import urllib
-
-import cmaDir_support
 import defs
-import easyinstallers.CmBackup.main as CMBACKUP
-import main
-
+import os
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 
-
-import os
-import fnmatch
-
-import sign_support
 version = "v0.5"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'
+import fnmatch
+import getopt
+import sys
+import tkMessageBox
+import urllib
+import main
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
  if args[0] == "m":
@@ -71,6 +64,7 @@ except IndexError:
 try:
     if args[0] != "" and args[0] != "noUpdateCheck":
         print "Extracting CMBackup File"
+        import easyinstallers.CmBackup.main as CMBACKUP
         CMBACKUP.vp_start_gui(args[0])
 except IndexError:
     ""

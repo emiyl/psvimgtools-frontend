@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+
 import sys
 
 import defs
@@ -80,6 +80,7 @@ class PSVImgTools:
         self.Button2.configure(activebackground="#d9d9d9")
         self.Button2.configure(command=main_support.bkupMgr)
         self.Button2.configure(text='''Backup Manager''')
+
 
         self.Button3 = Button(self.Labelframe1)
         self.Button3.place(relx=0.07, rely=0.47, height=26, width=127)
