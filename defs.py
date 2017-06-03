@@ -347,15 +347,16 @@ import os
 import zipfile
 
 def zip(src, dst):
-    zf = zipfile.ZipFile("%s" % (dst), "w", zipfile.ZIP_DEFLATED)
+    zf = zipfile.ZipFile("%s" % (dst), "w", zipfile.ZIP_DEFLATED,allowZip64 = True)
     abs_src = os.path.abspath(src)
     for dirname, subdirs, files in os.walk(src):
         for filename in files:
             absname = os.path.abspath(os.path.join(dirname, filename))
             arcname = absname[len(abs_src) + 1:]
-            print 'Adding %s To %s' % (os.path.join(dirname, filename),
-                                        arcname)
+            print 'Writing %s To CMBackup' % (os.path.join(dirname, filename))
             zf.write(absname, arcname)
+            print 'Removing '+os.path.join(dirname, filename)
+            os.remove(os.path.join(dirname, filename))
     zf.close()
 
 def extractZip(src,dst):

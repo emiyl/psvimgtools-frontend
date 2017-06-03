@@ -55,6 +55,7 @@ def cmbackup():
     os.remove("temp/load.txt")
     os.remove("temp/TitleID.txt")
     os.removedirs("temp")
+    print "Extracting CMBackup.."
     defs.extractZip(src=cmfile,dst=defs.getCmaDir() + '/EXTRACTED/'+loadtype+"/"+CMABACKUP)
     os.remove(defs.getCmaDir() + '/EXTRACTED/'+loadtype+"/"+CMABACKUP+"/"+"load.txt")
     os.remove(defs.getCmaDir() + '/EXTRACTED/' + loadtype + "/" + CMABACKUP + "/" + "TitleID.txt")
@@ -172,6 +173,15 @@ def goSign(acc, ld, bkup, resign):
              'patch',
              'savedata']
             am = 3
+
+        print 'Checking for Packed Backup..'
+        if os.path.exists(CMA + '/' + ld + '/' + cmaAID + '/' + bkup):
+            print "Packed backup allredy exists. removing.."
+            shutil.rmtree(CMA + '/' + ld + '/' + cmaAID + '/' + bkup)
+            print 'Packing backup..'
+        else:
+            print "Nope, Packing Backup.."
+
         if not os.path.exists(CMA + '/' + ld + '/' + cmaAID + '/' + bkup):
             os.makedirs(CMA + '/' + ld + '/' + cmaAID + '/' + bkup)
         while am != -1:

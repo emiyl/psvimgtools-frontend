@@ -72,7 +72,13 @@ def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False):
                 sys.exit()
 
 
-
+    print "Checking if allready extracted backup exists..."
+    if os.path.exists(CMA + '/EXTRACTED/' + load + '/' + cmaBackup):
+        print 'Backup Found! Removing...'
+        shutil.rmtree(CMA + '/EXTRACTED/' + load + '/' + cmaBackup)
+        print 'Extracting backup..'
+    else:
+        print 'Nope! Extracting backup..'
     global am
     global foldParams
     import unsign
@@ -190,6 +196,7 @@ def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False):
         defs.zip(src=CMA + '/EXTRACTED/'+load+'/'+cmaBackup,dst=location)
         print "Removing: "+ CMA + '/EXTRACTED/' + load + '/' + cmaBackup
         shutil.rmtree(CMA + '/EXTRACTED/' + load + '/' + cmaBackup)
+        print "Done! CMBackup Created!"
         tkMessageBox.showinfo(title='CMBACKUP', message='.cmbackup Created.')
     sys.stdout.flush()
 

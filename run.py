@@ -2,7 +2,7 @@ import defs
 import os
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 
-version = "v0.5"
+version = "v0.5.1"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
@@ -184,7 +184,7 @@ elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"
     print "Executing: assoc .cmbackup=CmbackupFile"
     os.system("assoc .cmbackup=CmbackupFile")
     print 'Executing: ftype CmbackupFile="'+defs.getWorkingDir()+'\\run.exe"'
-    os.system('ftype CmbackupFile="'+defs.getWorkingDir()+'"')
+    os.system('ftype CmbackupFile="'+defs.getWorkingDir()+'\\run.exe"')
     print("Starting GUI")
     main.vp_start_gui()
 elif sys.platform.__contains__("darwin"):
