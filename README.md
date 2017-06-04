@@ -19,12 +19,12 @@ Thanks to DaveeFTW for cracking CMA keys. (cma.henkaku.xyz)
 Thanks to Sony for the PSVITA.               
 
 # Features
-1. Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data from CMA Config files.
-2. EasyInstallers, to easily install common hacks, such as ARK-2, VHBL, Whitelist Hack and more.
-3. Account Mannager - Supports multiple PSN Accounts
-5. Quick Resign - Quickly change the owner of a backup from one account to another.
-6. CMBACKUP - A way to share backup files with anyone easily
-7. Automatic updates, Will automatically scan for new updates and ask if u want to install
+Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data from CMA Config files.          
+EasyInstallers, to easily install common hacks, such as ARK-2, VHBL, Whitelist Hack and more.              
+Account Mannager - Supports multiple PSN Accounts                   
+Quick Resign - Quickly change the owner of a backup from one account to another.            
+CMBACKUP - A way to share backup files with anyone easily                  
+Automatic updates, Will automatically scan for new updates and ask if u want to install           
 
 # EasyInstallers
 **HiddenApps** - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65]      
