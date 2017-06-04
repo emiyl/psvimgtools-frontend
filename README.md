@@ -10,7 +10,7 @@ of the account that created said backup
 4. If your on linux you require *libgcrypt-dev*
 
 # Credits
-Thanks to Tungol for bplistlib, Reading binary plists in python.              
+Thanks to Tungol for bplistlib, Reading binary property lists in python.              
 Thanks to Yifanlu for the original PSVIMGTOOLS command line                 
 Thanks to Don Rozenberg for PAGE Which i used to create GUI's                  
 Thanks to Codestation for QCMA                  
