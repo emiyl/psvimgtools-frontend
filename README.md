@@ -4,9 +4,10 @@ Which is a tool that can be used to decrypt & extract PSVita Backup Files (.psvi
 of the account that created said backup
 
 # Requirements
-1. A PSVita on ANY Firmware (even 3.65)
-2. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
-3. If your on linux you require *libgcrypt-dev*
+1. A PC Running Ubuntu or distros based on ubuntu (other distros might work but untested.), Windows (32 or 64 Bit), or MacOS 
+2. A PSVita on ANY Firmware (even 3.65)
+3. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
+4. If your on linux you require *libgcrypt-dev*
 
 # Credits
 Thanks to Tungol for bplistlib, without it i would be unable to read binary plists!
