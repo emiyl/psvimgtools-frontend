@@ -6,7 +6,7 @@ of the account that created said backup
 # Requirements
 1. A PSVita on ANY Firmware (even 3.65)
 2. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
-3. If your on linux you require **libgcrypt-dev**
+3. If your on linux you require *libgcrypt-dev*
 
 # Credits
 Thanks to Tungol for bplistlib, without it i would be unable to read binary plists!
@@ -27,7 +27,7 @@ Thanks to Sony for the PSVITA.
 7. Automatic updates, Will automatically scan for new updates and ask if u want to install
 
 # EasyInstallers
-HiddenApps - Install ★Hidden Applications -- [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65]             
+HiddenApps - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65]     
 Skype - Install the Skype App -- The one from PSN [3.63 Or Lower]                                                
 ARK - Patch a PSP Game with ARK-2 -- PSP/PSX ISO Loader [3.63 Or Lower]                                    
 PSMRuntime - Install the Playstation(R)Mobule Runtime v2.01 [All FW]                                       
