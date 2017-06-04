@@ -1,8 +1,7 @@
-# psvimgtools-frontend
-
 # About
 This is a GUI Interface For Team Molecule / Yifanlu's PSVIMGTools 
-Which is a tool that can be used to decrypt & extract PSVita Backup Files (.psvimg) Providing you knew the AID of the account that created the backup, 
+Which is a tool that can be used to decrypt & extract PSVita Backup Files (.psvimg) Providing you know the AID (AccountID)
+of the account that created said backup
 
 # Requirements
 1. A PSVita on ANY Firmware (even 3.65)
