@@ -4,19 +4,19 @@ Which is a tool that can be used to decrypt & extract PSVita Backup Files (.psvi
 of the account that created said backup
 
 # Requirements
-1. A PC Running Ubuntu or distros based on ubuntu (other distros might work but untested.), Windows (32 or 64 Bit), or MacOS 
+1. A PC 32 or 64 Bit PC Running Windows, Mac or Linux. 
 2. A PSVita on ANY Firmware (even 3.65)
 3. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
 4. If your on linux you require *libgcrypt-dev*
 
 # Credits
-Thanks to Tungol for bplistlib, without it i would be unable to read binary plists!
+**Thanks to Tungol for bplistlib, without it i would be unable to read binary plists!
 Thanks to Yifanlu for the original PSVIMGTOOLS command line
 Thanks to Don Rozenberg for PAGE Which i used to create GUI's
 Thanks to Codestation for QCMA
 Thanks to Chris Kreager a.k.a LanThief for his Python .SFO Parser
 Thanks to DaveeFTW for cracking CMA keys. (cma.henkaku.xyz)
-Thanks to Sony for the PSVITA. 
+Thanks to Sony for the PSVITA. **
 
 # Features
 1. Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data from CMA Config files.
