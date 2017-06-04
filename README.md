@@ -26,7 +26,7 @@ Thanks to Sony for the PSVITA.
 7. Automatic updates, Will automatically scan for new updates and ask if u want to install
 
 # EasyInstallers
-**HiddenApps** - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65] 
+**HiddenApps** - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65]      
 **Skype** - Install the Skype App -- The one from PSN [3.63 Or Lower]                                                
 **ARK** - Patch a PSP Game with ARK-2 -- PSP/PSX ISO Loader [3.63 Or Lower]                                    
 **PSMRuntime** - Install the Playstation(R)Mobule Runtime v2.01 [All FW]                                       
