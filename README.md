@@ -6,7 +6,7 @@ of the account that created said backup
 # Requirements
 1. A PC 32 or 64 Bit PC Running Windows, Mac or Linux. 
 2. A PSVita on ANY Firmware (even 3.65)
-3. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
+3. QCMA by Codestation (Normal SONY CMA will work, but not recommended.)
 4. If your on linux you require *libgcrypt-dev*
 
 # Credits
