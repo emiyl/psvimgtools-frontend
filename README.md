@@ -6,8 +6,7 @@ of the account that created said backup
 # Requirements
 1. A PSVita on ANY Firmware (even 3.65)
 2. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
-3. If your on linux u require *libgcrypt-dev
-
+3. If your on linux you require **libgcrypt-dev**
 
 # Credits
 Thanks to Tungol for bplistlib, without it i would be unable to read binary plists!
@@ -16,8 +15,7 @@ Thanks to Don Rozenberg for PAGE Which i used to create GUI's
 Thanks to Codestation for QCMA
 Thanks to Chris Kreager a.k.a LanThief for his Python .SFO Parser
 Thanks to DaveeFTW for cracking CMA keys. (cma.henkaku.xyz)
-Thanks to Sony for the PSVITA, and the CM Backup System.
-
+Thanks to Sony for the PSVITA. 
 
 # Features
 1. Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data directly from CMA! (such as AccountID)
