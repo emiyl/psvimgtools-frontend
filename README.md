@@ -1,65 +1,46 @@
 # psvimgtools-frontend
+
+# About
 This is a GUI Interface For Team Molecule / Yifanlu's PSVIMGTools 
 Which is a tool that can be used to decrypt & extract PSVita Backup Files (.psvimg) Providing you knew the AID of the account that created the backup, 
 
-this works on every firmware to this date, including 3.63. and probably all future firmwares
+# Requirements
+1. A PSVita on ANY Firmware (even 3.65)
+2. QCMA by Codestation (Normal SONY CMA is partially supported and not recommended)
+3. If your on linux u require *libgcrypt-dev
 
-the only problem with yifan's inital release, was it was a command-line only tool and also could be a pain in the ass even to some unexperienced users, so this i decided to make this GUI Frontend which will give you all the functions of psvimgtools + more with a GUI. My frontend is written in Python2.7 and supports win32, win64 and linux64 for linux you require libgcrypt11-dev to be installed (sudo apt-get install libgcrypt11-dev) also for everyone, qcma is required for this app to even run.
 
-To design the GUI's i used a tool called PAGE.
+# Credits
+Thanks to Tungol for bplistlib, without it i would be unable to read binary plists!
+Thanks to Yifanlu for the original PSVIMGTOOLS command line
+Thanks to Don Rozenberg for PAGE Which i used to create GUI's
+Thanks to Codestation for QCMA
+Thanks to Chris Kreager a.k.a LanThief for his Python .SFO Parser
+Thanks to DaveeFTW for cracking CMA keys. (cma.henkaku.xyz)
+Thanks to Sony for the PSVITA, and the CM Backup System.
 
-Heres a list of features i currently have: 
 
-1. QCMA Intergration. i have tried my best to make this intergrate well with QCMA. For example when you start the app for the first time it will automatically find your QCMA Backups Folder, and will Automatically find your accounts AID, and download CMA Key You can also trigger both of these process'es to occur manually.
+# Features
+1. Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data directly from CMA! (such as AccountID)
+2. EasyInstallers, to easily install common hacks, such as ARK-2, VHBL, Whitelist Hack and more.
+3. Account Mannager - Supports as many accounts PSN Accounts as you can fit on your HDD, (about 10 Bytes each)
+4. Encrypt & Decrypt CMA Backups
+5. Quick Resign - Quickly change the owner of a backup from one account to another.
+6. CMBACKUP - A way to share backup files with anyone easily
+7. Automatic updates, Will automatically scan for new updates and ask if u want to install
 
-2. Quick Resign, Quickly Change the owner of a backup (Note: Only DRMFree Content will run on incorrect accounts!)
+# EasyInstallers
+HiddenApps - Install ★Hidden Applications -- [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65]
+Skype - Install the Skype App -- The one from PSN [3.63 Or Lower]
+ARK - Patch a PSP Game with ARK-2 -- PSP/PSX ISO Loader [3.63 Or Lower]
+PSMRuntime - Install the Playstation(R)Mobule Runtime v2.01 [All FW]
+URICaller - Patch a SYSTEM Backup to enable all support_uri's and install a uricaller app [All FW]
+VHBL - Patch a PSP Game with VHBL -- Vita Half Byte Loader [All FW]
+RemoveFeatured - Patch a SYSTEM Backup to remove the "Topics" app on a PSTV [All FW]
+CmBackup - Install a .cmbackup file -- [Download .cmbackup's](https://drive.google.com/open?id=0B8wXQbm9DD-6UndjcWFWNV9JTlk) [All FW]
+Whitelister - Patch a SYSTEM Backup with Whitelister v2 -- Play ALL games on your PSTV! [All FW]
+EmuBubble - Patch a PSP Game with an emulator bubble [All FW]
 
-3. Extract and Create Backup Files
-
-4. EasyInstallers, Enables you to easily install, Hidden Applications, ARK-2, VHBL Whitelist Hack, URICaller
-
-5. Account Mannager, save multiple accounts's AID, and KEY's
-
-6. Reading Param.SFO File To display backup NAME instead of TITLEID
-
-7. CMBACKUP Files (These are kinda like what .pkgs was with package installer 2.0 only done right and not in a way that will confuse everyone!)
-
-I also have a few features planned such as:
-
-1. Some sort of progress bar/indicator (This will be hard to do. as extracting / repacking is handled by PSVIMGTOOLS CLI)
-
-3. A Server Where You Can Upload/Download DRMFree Backup Files.
-
-4. Supporting Other CMA's (DevkitCMA, OpenCMA, and OfficalCMA)
-
-Features i want, but arent possible yet:
-
-1. Creating Backup Files From .pkg Files
-
-2. Option To Decrypt PFS.
-
-Upcomming:
-1. EasyInstaller for PSM Runtime Skype, and Remove The Featured App.
-2. Updated ARK-2 Easyinstaller.
-
-Common Problems:
-1. It doesnt open
-
-This could be for a whole lot of reasons.
-but the two most common reasons ive seen is the following:
-you dont have QCMA installed.
-if you do have QCMA installed, the SECOUND most common reason:
-is that you have never connected your PSVita with QCMA before
-just plug in the USB Cable and wait for it to detect it, (you can also connect via WIFI)
-
-it should also be noted that it might cause a problem if it is your first time running the program however you do not have internet access (or access to cma.henkaku.xyz) this might cause a problem like this as well.
-
-If your problem is something other than these, please open an issue on this github.
-
-For noobs: No this doesnt enable piracy, (except for epsp..) And No this isnt going to lead to a 3.63 spoof for games or PSN.
-you cannot run vita homebrew with this (only psp) hidden applications and uricaller dont acturally execute any applications.
-
-2. The titles of games are not displayed correctly
-
-Known bug allready only seems to effect some computers and i cant seem to replicate the bug.
-it doesnt acturally effect functionality though. it will still work..
+# Donate
+If you would like to support me and this project, you can donate to me using this link:
+https://goo.gl/dvHkEh
