@@ -15,6 +15,7 @@ import easyinstallers.Skype.main as Skype
 import easyinstallers.RemoveFeatured.main as RemoveFeatured
 import easyinstallers.CmBackup.main as cmbackup
 import easyinstallers.EmuBubble.main as emububble
+import easyinstallers.ClonePSP.main as clonePSP
 try:
     from Tkinter import *
 except ImportError:
@@ -55,6 +56,8 @@ def install(plugin):
         cmbackup.vp_start_gui()
     elif plugin == 'EmuBubble':
         emububble.vp_start_gui()
+    elif plugin == 'ClonePSP':
+        clonePSP.vp_start_gui()
 
     sys.stdout.flush()
 
