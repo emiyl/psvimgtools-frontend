@@ -12,6 +12,11 @@ import requests
 
 global latestVersion
 
+def doesStringContain(contain,string):
+    valid = set(contain)
+    return set(string).issubset(valid)
+
+
 def downloadWithProgressBar(link, file_name):
     with open(file_name, "wb") as f:
             print "Downloading %s" % file_name
