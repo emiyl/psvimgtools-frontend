@@ -205,8 +205,8 @@ def goSign(acc, ld, bkup, resign):
             foldParams = ['game', 'license']
             am = 1
         elif ld == 'PSM':
-            foldParams = ['game', 'license']
-            am = 1
+            foldParams = ['app']
+            am = 0
         while am != -1:
             if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
                 print 'Executing: ./psvimg-create -m ' + '"' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '.psvmd-dec" -K ' + cmaKey + ' "' + CMA + '/EXTRACTED/' + ld + '/' + bkup + '/' + foldParams[am] + '" "' + CMA + '/' + ld + '/' + cmaAID + '/' + bkup + '/' + foldParams[am] + '"'

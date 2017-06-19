@@ -132,8 +132,8 @@ def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False):
             foldParams = ['game', 'license']
             am = 1
         elif load == 'PSM':
-            foldParams = ['game', 'license']
-            am = 1
+            foldParams = ['app']
+            am = 0
         while am != -1:
             if sys.platform.__contains__('linux') or sys.platform.__contains__('darwin'):
                 print 'Executing: ./psvimg-extract -K ' + cmaKey + ' "' + CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + foldParams[am] + '/' + foldParams[am] + '.psvimg" "' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '/' + foldParams[am] + '"'

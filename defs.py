@@ -145,12 +145,12 @@ def isBackup(dir):
 
 
 def isEncryptedApp(dir):
-    if os.path.isfile(dir + '/license/license.psvmd'):
+    if os.path.isfile(dir + '/sce_sys/param.sfo'):
         return True
 
 
 def isApp(dir):
-    if os.path.isfile(dir + '/license.psvmd-dec'):
+    if os.path.isfile(dir + '/sce_sys/param.sfo'):
         return True
 
 
