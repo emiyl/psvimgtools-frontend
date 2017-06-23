@@ -2,7 +2,7 @@ import defs
 import os
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 
-version = "v0.5.1"
+version = "v0.5.2"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
