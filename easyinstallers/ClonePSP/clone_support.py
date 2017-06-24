@@ -35,10 +35,10 @@ def set(newTitleId,oldTitleId,account):
     if not defs.doesStringContain("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",newTitleId):
         tkMessageBox.showerror(title="Character Error",message="The TitleID contains an invalid character")
         sys.exit()
-    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/sce_sys/param.sfo", 'r') as file:
+    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/sce_sys/param.sfo", 'rb') as file:
         filedata = file.read()
     filedata = filedata.replace(oldTitleId, newTitleId)
-    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/sce_sys/param.sfo", 'w') as file:
+    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/sce_sys/param.sfo", 'wb') as file:
         file.write(filedata)
     print "param.sfo Patched"
 
