@@ -42,10 +42,10 @@ def set(newTitleId,oldTitleId,account):
         file.write(filedata)
     print "param.sfo Patched"
 
-    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/game/ux0_pspemu_temp_game_PSP_GAME_"+oldTitleId+"/VITA_PATH.TXT", 'r') as file:
+    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/game/ux0_pspemu_temp_game_PSP_GAME_"+oldTitleId+"/VITA_PATH.TXT", 'rb') as file:
         filedata = file.read()
     filedata = filedata.replace(oldTitleId, newTitleId)
-    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/game/ux0_pspemu_temp_game_PSP_GAME_"+oldTitleId+"/VITA_PATH.TXT", 'w') as file:
+    with open(defs.getCmaDir()+'/EXTRACTED/PGAME/'+oldTitleId+"/game/ux0_pspemu_temp_game_PSP_GAME_"+oldTitleId+"/VITA_PATH.TXT", 'wb') as file:
         file.write(filedata)
     print "VITA_PATH.TXT Patched"
 
