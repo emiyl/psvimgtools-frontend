@@ -1,3 +1,4 @@
+import Tkinter
 import json
 import ConfigParser
 import sys
@@ -10,12 +11,19 @@ from os.path import expanduser
 
 import requests
 
+
 global latestVersion
 
 def doesStringContain(contain,string):
     valid = set(contain)
     return set(string).issubset(valid)
 
+
+def showMessage(title,message):
+    window = Tkinter.Tk()
+    window.wm_withdraw()
+    tkMessageBox.showinfo(title=title, message=message)
+    window.destroy()
 
 def downloadWithProgressBar(link, file_name):
     with open(file_name, "wb") as f:
@@ -43,6 +51,7 @@ def checkForUpdate(currentVersion):
     if os.path.exists('tmp.json'):
         with open('tmp.json') as data_file:
             data = json.load(data_file)
+            global latestVersion
             latestVersion = data["tag_name"]
             data_file.close()
         os.remove("tmp.json")
@@ -50,7 +59,11 @@ def checkForUpdate(currentVersion):
         print 'Current Version Is: ' + currentVersion
         if currentVersion != latestVersion:
             print "An Update Is Available!"
-            if tkMessageBox.askyesno(title="Update?",message="An Update Is Avalible! \nVersion "+latestVersion+" Would you like to update?"):
+            window = Tkinter.Tk()
+            window.wm_withdraw()
+            update = tkMessageBox.askyesno(title="Update?",message="An Update Is Avalible! \nVersion "+latestVersion+" Would you like to update?")
+            window.destroy()
+            if update:
                 if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
                     if get64Bit():
                         downloadWithProgressBar("https://github.com/SilicaAndPina/psvimgtools-frontend/releases/download/"+latestVersion+"/psvimgtools-frontend-win64-setup.exe","install.exe")
@@ -81,7 +94,7 @@ if sys.platform.__contains__('linux'):
 if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
-        os.system('explorer.exe "' + path + '"')
+        os.system('start "' + path + '"')
 
 def getHomeDir():
     from os.path import expanduser
@@ -165,7 +178,7 @@ def autoCMA():
             print 'CMA Dir: ' + cmaFile['appsPath']
         else:
             print "Cannot find CMADir..."
-            tkMessageBox.showinfo(title="CMADIR", message="Could not find the CMA Backups Directory.")
+            showMessage(title="CMADIR", message="Could not find the CMA Backups Directory.")
             import cmaDir
             cmaDir.vp_start_gui()
     if sys.platform.__contains__('linux'):
@@ -181,7 +194,7 @@ def autoCMA():
             print 'CMA Dir: ' + line
         else:
             print "Cannot find CMADir..."
-            tkMessageBox.showinfo(title="CMADIR", message="Could not find the CMA Backups Directory.")
+            showMessage(title="CMADIR", message="Could not find the CMA Backups Directory.")
             import cmaDir
             cmaDir.vp_start_gui()
 
@@ -225,7 +238,7 @@ def autoCMA():
                         print "I HIGHLY RECOMMEND USING QCMA INSTEAD!"
                     except:
                         print "Cannot find CMADir..."
-                        tkMessageBox.showinfo(title="CMADIR", message="Could not find the CMA Backups Directory.")
+                        showMessage(title="CMADIR", message="Could not find the CMA Backups Directory.")
                         import cmaDir
                         cmaDir.vp_start_gui()
 
@@ -248,7 +261,7 @@ def autoAccount():
             print 'AID: ' + aid
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            showMessage(title='FAIL',message='Count not find account automatically.')
             import account
             account.vp_start_gui()
 
@@ -262,7 +275,7 @@ def autoAccount():
             print 'AID: ' + aid
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            showMessage(title='FAIL',message='Count not find account automatically.')
             import account
             account.vp_start_gui()
 
@@ -274,7 +287,7 @@ def autoAccount():
             aid = _winreg.QueryValueEx(qcma, 'lastAccountId')
         except:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            showMessage(title='FAIL',message='Count not find account automatically.')
             import account
             account.vp_start_gui()
         aid = aid[0]
@@ -288,7 +301,7 @@ def autoAccount():
             print 'Account Name: ' + acc
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            showMessage(title='FAIL',message='Count not find account automatically.')
             import account
             account.vp_start_gui()
     if sys.platform.__contains__('linux'):
@@ -301,7 +314,7 @@ def autoAccount():
             print 'Account Name: ' + acc
         else:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            showMessage(title='FAIL',message='Count not find account automatically.')
             import account
             account.vp_start_gui()
     if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
@@ -312,7 +325,7 @@ def autoAccount():
             acc = acc[0]
         except:
             print "No Account Found!"
-            tkMessageBox.showinfo(title='FAIL',message='Count not find account automatically.')
+            showMessage(title='FAIL',message='Count not find account automatically.')
             import account
             account.vp_start_gui()
         print 'Account Name: ' + acc
@@ -330,7 +343,10 @@ def autoAccount():
         except:
             print "Failed to connect to: "+'http://cma.henkaku.me/?aid=' + aid
             print "Could Not Connect, Cannot find CMA Key!"
+            window = Tkinter.Tk()
+            window.wm_withdraw()
             tkMessageBox.showerror(title="Connection Error.",message="Failed to connect to: \nhttp://cma.henkaku.xyz\nThus your CMA Key could not be determined,\nPSVIMGTOOLS will not work without your CMA Key, \nPlease check your connection and try again.")
+            window.destroy()
             sys.exit()
 
     key = getKey()
@@ -351,6 +367,14 @@ def getTitleID(backup):
 import os
 import zipfile
 
+def executePy(file):
+    print "Running file: "+ file
+    pyFile = open(file)
+    pyData = pyFile.read()
+    pyFile.close()
+    exec(pyData)
+
+
 def zip(src, dst):
     zf = zipfile.ZipFile("%s" % (dst), "w", zipfile.ZIP_DEFLATED,allowZip64 = True)
     abs_src = os.path.abspath(src)
@@ -368,3 +392,189 @@ def extractZip(src,dst):
     zf = zipfile.ZipFile(src)
     zf.extractall(path=dst)
     zf.close()
+
+
+import fnmatch
+import os
+import sys
+
+import backupType_support
+
+try:
+    from Tkinter import *
+except ImportError:
+    from tkinter import *
+
+try:
+    import ttk
+    py3 = 0
+except ImportError:
+    import tkinter.ttk as ttk
+    py3 = 1
+
+import accSelect_support
+def returnAccount(acc):
+    global account
+    account = acc
+    close_window(root=root)
+
+def get_account():
+    vp_start_gui()
+    return account
+
+def vp_start_gui():
+    '''Starting point when module is the main routine.'''
+    global val, w, root
+    root = Tk()
+    if sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+        import defs
+        root.iconbitmap(bitmap=defs.getWorkingDir()+'\icon.ico')
+    top = Account_Selector (root)
+    accSelect_support.init(root, top)
+    root.mainloop()
+def close_window(root):
+    root.destroy()
+w = None
+def create_Account_Selector(root, *args, **kwargs):
+    '''Starting point when module is imported by another program.'''
+    global w, w_win, rt
+    rt = root
+    w = Toplevel (root)
+    top = Account_Selector (w)
+    accSelect_support.init(w, top, *args, **kwargs)
+    return (w, top)
+
+def destroy_Account_Selector():
+    global w
+    w.destroy()
+    w = None
+
+
+class Account_Selector:
+    def __init__(self, top=None):
+        '''This class configures and populates the toplevel window.
+           top is the toplevel containing window.'''
+        _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
+        _fgcolor = '#000000'  # X11 color: 'black'
+        _compcolor = '#d9d9d9' # X11 color: 'gray85'
+        _ana1color = '#d9d9d9' # X11 color: 'gray85'
+        _ana2color = '#d9d9d9' # X11 color: 'gray85'
+        font10 = "-family {DejaVu Sans Mono} -size 12 -weight normal "  \
+            "-slant roman -underline 0 -overstrike 0"
+        self.style = ttk.Style()
+        if sys.platform == "win32":
+            self.style.theme_use('winnative')
+        self.style.configure('.',background=_bgcolor)
+        self.style.configure('.',foreground=_fgcolor)
+        self.style.map('.',background=
+            [('selected', _compcolor), ('active',_ana2color)])
+
+        top.geometry("310x453+398+30")
+        top.title("Account Selector")
+        top.configure(highlightcolor="black")
+
+
+
+        self.Label1 = Label(top)
+        self.Label1.place(relx=0.03, rely=0.02, height=18, width=120)
+        self.Label1.configure(activebackground="#f9f9f9")
+        self.Label1.configure(text='''Account Selector''')
+        a=0
+        self.accountList = ScrolledListBox(top)
+        self.accountList.place(relx=0.03, rely=0.07, relheight=0.85
+                , relwidth=0.92)
+        self.accountList.configure(background="white")
+        self.accountList.configure(font=font10)
+        self.accountList.configure(highlightcolor="#d9d9d9")
+        self.accountList.configure(selectbackground="#c4c4c4")
+        self.accountList.configure(width=10)
+        for root, dir, files in os.walk("accounts"):
+            for items in fnmatch.filter(files, "*"):
+                a += 1
+                self.accountList.insert(a, items)
+        self.Button1 = Button(top)
+        self.Button1.place(relx=0.58, rely=0.93, height=26, width=117)
+        self.Button1.configure(activebackground="#d9d9d9")
+        self.Button1.configure(command=lambda: returnAccount(self.accountList.get(ACTIVE)))
+        self.Button1.configure(text='''Choose Account''')
+
+
+
+
+
+# The following code is added to facilitate the Scrolled widgets you specified.
+class AutoScroll(object):
+    '''Configure the scrollbars for a widget.'''
+
+    def __init__(self, master):
+        #  Rozen. Added the try-except clauses so that this class
+        #  could be used for scrolled entry widget for which vertical
+        #  scrolling is not supported. 5/7/14.
+        try:
+            vsb = ttk.Scrollbar(master, orient='vertical', command=self.yview)
+        except:
+            pass
+        hsb = ttk.Scrollbar(master, orient='horizontal', command=self.xview)
+
+        #self.configure(yscrollcommand=_autoscroll(vsb),
+        #    xscrollcommand=_autoscroll(hsb))
+        try:
+            self.configure(yscrollcommand=self._autoscroll(vsb))
+        except:
+            pass
+        self.configure(xscrollcommand=self._autoscroll(hsb))
+
+        self.grid(column=0, row=0, sticky='nsew')
+        try:
+            vsb.grid(column=1, row=0, sticky='ns')
+        except:
+            pass
+        hsb.grid(column=0, row=1, sticky='ew')
+
+        master.grid_columnconfigure(0, weight=1)
+        master.grid_rowconfigure(0, weight=1)
+
+        # Copy geometry methods of master  (taken from ScrolledText.py)
+        if py3:
+            methods = Pack.__dict__.keys() | Grid.__dict__.keys() \
+                  | Place.__dict__.keys()
+        else:
+            methods = Pack.__dict__.keys() + Grid.__dict__.keys() \
+                  + Place.__dict__.keys()
+
+        for meth in methods:
+            if meth[0] != '_' and meth not in ('config', 'configure'):
+                setattr(self, meth, getattr(master, meth))
+
+    @staticmethod
+    def _autoscroll(sbar):
+        '''Hide and show scrollbar as needed.'''
+        def wrapped(first, last):
+            first, last = float(first), float(last)
+            if first <= 0 and last >= 1:
+                sbar.grid_remove()
+            else:
+                sbar.grid()
+            sbar.set(first, last)
+        return wrapped
+
+    def __str__(self):
+        return str(self.master)
+
+def _create_container(func):
+    '''Creates a ttk Frame with a given master, and use this new frame to
+    place the scrollbars and the widget.'''
+    def wrapped(cls, master, **kw):
+        container = ttk.Frame(master)
+        return func(cls, container, **kw)
+    return wrapped
+
+class ScrolledListBox(AutoScroll, Listbox):
+    '''A standard Tkinter Text widget with scrollbars that will
+    automatically show/hide as needed.'''
+    @_create_container
+    def __init__(self, master, **kw):
+        Listbox.__init__(self, master, **kw)
+        AutoScroll.__init__(self, master)
+
+

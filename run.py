@@ -1,19 +1,21 @@
 import defs
 import os
-# Requires BPlistLib -- https://github.com/tungol/bplistlib
+import fnmatch
+import getopt
+import sys
+import urllib
+import main
 
-version = "v0.5.2"
+# Requires BPlistLib -- https://github.com/tungol/bplistlib
+# Requires REQUESTS -- pip install requests
+
+version = "v0.6"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'
-import fnmatch
-import getopt
-import sys
-import tkMessageBox
-import urllib
-import main
+
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
  if args[0] == "m":
@@ -193,7 +195,7 @@ elif sys.platform.__contains__("darwin"):
     print("Starting GUI")
     main.vp_start_gui()
 else:
-    tkMessageBox.showinfo(title="Error 009", message="Your OS Is Not Supported!")
+    defs.showMessage(title="Error 009", message="Your OS Is Not Supported!")
     quit()
 
 sys.exit()

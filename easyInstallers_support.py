@@ -59,6 +59,10 @@ def install(plugin):
     elif plugin == 'ClonePSP':
         clonePSP.vp_start_gui()
 
+    else:
+        ### Load Custom EasyInstaller. ###
+        defs.executePy(defs.getWorkingDir()+'/easyinstallers/'+plugin+'/main.py')
+
     sys.stdout.flush()
 
 
