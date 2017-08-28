@@ -11,7 +11,7 @@ import main
 
 version = "v0.6"
 os.chdir(defs.getWorkingDir())
-print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
+print "/--PSVIMGTOOLS-FRONTEND "+version+"---\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'

@@ -24,7 +24,7 @@ if sys.platform.__contains__('linux'):
 if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
-        os.system('explorer.exe "' + path + '"')
+        os.system('start "' + path + '"')
 
 
 import defs
@@ -60,7 +60,7 @@ def getLoad():
 
 
 
-def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False):
+def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False,load="",account=""):
     if cmbackup == True:
             title=sfoParser.main(CMA + '/' + load + '/' + defs.getAid(account) + '/' + cmaBackup + '/sce_sys/param.sfo')
             location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile = title)
