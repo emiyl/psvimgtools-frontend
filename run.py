@@ -9,9 +9,9 @@ import main
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 # Requires REQUESTS -- pip install requests
 
-version = "v0.6"
+version = "v0.5.3"
 os.chdir(defs.getWorkingDir())
-print "/--PSVIMGTOOLS-FRONTEND "+version+"---\ "
+print "/--PSVIMGTOOLS-FRONTEND "+version+"--\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'

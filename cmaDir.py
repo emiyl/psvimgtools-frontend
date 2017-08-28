@@ -66,7 +66,7 @@ class Cma_Directory:
 
 
         self.CmaDIR = Entry(top)
-        self.CmaDIR.place(relx=0.23, rely=0.3, relheight=0.25, relwidth=0.73)
+        self.CmaDIR.place(relx=0.2, rely=0.3, relheight=0.25, relwidth=0.73)
         self.CmaDIR.configure(background="white")
         self.CmaDIR.configure(font=font10)
         self.CmaDIR.configure(selectbackground="#c4c4c4")

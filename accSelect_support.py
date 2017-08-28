@@ -1,11 +1,4 @@
-
-import os
-import shutil
-import subprocess
-import sys
 import tkMessageBox
-from subprocess import call
-import accSelect
 import backupType_support
 import sign_support
 import unsign

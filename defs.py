@@ -102,10 +102,11 @@ def getHomeDir():
     return home
 
 def getCmaDir():
-    text = text_file = open(getWorkingDir()+'/cmadir.txt', 'r')
-    a = text.read()
-    text_file.close()
-    return a
+    if os.path.exists("cmadir.txt"):
+        text = text_file = open(getWorkingDir()+'/cmadir.txt', 'r')
+        a = text.read()
+        text_file.close()
+        return a
 
 
 def getKey():
@@ -396,9 +397,6 @@ def extractZip(src,dst):
 
 import fnmatch
 import os
-import sys
-
-import backupType_support
 
 try:
     from Tkinter import *

@@ -30,7 +30,7 @@ def auto():
     defs.autoAccount()
     import account
     account.close_window(root)
-    tkMessageBox.showinfo(title="Account Reigstered.",message="Account Registered")
+    defs.showMessage(title="Account Reigstered.",message="Account Registered")
     import accMgr
     accMgr.vp_start_gui()
     sys.stdout.flush()
@@ -38,13 +38,13 @@ def auto():
 
 def addaccount(aid, acc):
     if aid == "" and acc != "" and acc.find(',') == -1:
-        tkMessageBox.showinfo(title="Error 001", message="Please enter your AID.")
+        defs.showMessage(title="Error 001", message="Please enter your AID.")
 
     if acc == "" and aid != "" and aid.find(',') == -1:
-        tkMessageBox.showinfo(title="Error 002", message="Please enter Your Account Name")
+        defs.showMessage(title="Error 002", message="Please enter Your Account Name")
 
     if acc == "" and aid == "":
-        tkMessageBox.showinfo(title="Error 003", message="Please enter Your Account Name And your AID.")
+        defs.showMessage(title="Error 003", message="Please enter Your Account Name And your AID.")
 
     if len(aid) == 16:
         if acc != "" and aid != "" and acc.find(',') == -1:
@@ -61,7 +61,7 @@ def addaccount(aid, acc):
 
             import account
             account.close_window(root)
-            tkMessageBox.showinfo(title="Thank You!", message="Account: " + acc + " [" + aid + "] Was Registered.")
+            defs.showMessage(title="Thank You!", message="Account: " + acc + " [" + aid + "] Was Registered.")
             import accMgr
             accMgr.vp_start_gui()
 
@@ -69,7 +69,7 @@ def addaccount(aid, acc):
 
 
 def question():
-    tkMessageBox.showinfo(title="CMA Key",message="Your AID is the name of the random numbers and letters folder your CMA backups are stored in.")
+    defs.showMessage(title="CMA Key",message="Your AID is the name of the random numbers and letters folder your CMA backups are stored in.")
     sys.stdout.flush()
 
 
