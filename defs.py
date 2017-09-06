@@ -5,8 +5,8 @@ import sys
 import tkMessageBox
 import urllib
 import webbrowser
-
-import bplistlib
+if sys.platform == "darwin":
+    import bplistlib
 from os.path import expanduser
 
 import requests

@@ -54,17 +54,14 @@ def loadSYS():
 global account
 def chooseAccount(account):
     if backupType_support.getImportType() == "unsign":
-        accSelect.close_window(root)
         unsign_support.pushVars(account,load,False)
         unsign.vp_start_gui()
     elif backupType_support.getImportType() == "sign":
         sign_support.goSign(account,load,backup,False)
     if backupType_support.getImportType() == "resign":
-        accSelect.close_window(root)
         unsign_support.pushVars(account,load,True)
         unsign.vp_start_gui()
     if backupType_support.getImportType() == "resign2":
-        accSelect.close_window(root)
         sign_support.goSign(account, loaad, bkupz,True)
         tkMessageBox.showinfo(title="Resign", message="Re-Sign Complete! (Refresh QCMA)")
 
