@@ -70,8 +70,7 @@ def close_window(root):
 CMA = defs.getCmaDir()
 def patch(backup):
     import sign_support
-    unsign_support.pushVars(account, "SYSTEM",".")
-    unsign_support.goUnsign(backup,CMA)
+    unsign_support.goUnsign(backup,CMA,False,"SYSTEM",account,".")
     print "Patching With Hacked Whitelist"
     dbPath = CMA+"/EXTRACTED/SYSTEM/"+backup+"/ur0_shell/db/app.db"
     print "Opening: "+dbPath
