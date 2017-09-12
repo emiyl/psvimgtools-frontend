@@ -44,8 +44,7 @@ def close_window(root):
 CMA = defs.getCmaDir()
 def patch(backup):
     import sign_support
-    unsign_support.pushVars(account, "PGAME",".")
-    unsign_support.goUnsign(backup,CMA)
+    unsign_support.goUnsign(backup,CMA,account, "PGAME",".")
     print "Patching With ARK-2"
     shutil.copy(defs.getWorkingDir() + "/easyinstallers/ARK/patch/PBOOT.PBP",CMA + "/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/")
     print "Signing to: " +account
