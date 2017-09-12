@@ -12,8 +12,7 @@ import defs
 def createBackup(emulator,backup,account):
     print emulator,account,backup
     import unsign_support
-    unsign_support.pushVars(acc=account,lad="PGAME",resi=".")
-    unsign_support.goUnsign(cmaBackup=backup)
+    unsign_support.goUnsign(cmaBackup=backup,account=account,load="PGAME",resign=".")
     from distutils.dir_util import copy_tree
     print "Copying "+defs.getWorkingDir()+"/easyinstallers/EmuBubble/FILES/"+emulator+" To "+defs.getCmaDir()+"/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/"
     copy_tree(defs.getWorkingDir()+"/easyinstallers/EmuBubble/FILES/"+emulator,defs.getCmaDir()+"/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/")
