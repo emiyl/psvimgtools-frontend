@@ -5,6 +5,7 @@ import getopt
 import sys
 import urllib
 import main
+import pfs
 
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 # Requires REQUESTS -- pip install requests
@@ -18,7 +19,7 @@ print '\-------------------------------/'
 
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
- if args[0] == "m":
+ if "m" in args:
         print "Running in MANUAL mode."
         print "In this mode you have to setup the application yourself."
         print "The only reason i added this mode is because people keep getting errors where\nthe application opens and then closes immediatley."
@@ -55,7 +56,7 @@ except IndexError:
     ""
 
 try:
-    if args[0] == "s":
+    if "s" in args:
         print "Skipping Initial Check.."
         print "Problems may occur when doing this..."
         print "Running GUI.."
@@ -70,13 +71,23 @@ try:
         CMBACKUP.vp_start_gui(args[0])
 except IndexError:
     ""
-
 try:
-    if args[0] == "noUpdateCheck":
+    if "noUpdateCheck" in args:
         print "Skipping Update Check."
+    else:
+        print "Checking for updates"
+        defs.checkForUpdate(version)
 except IndexError:
     print "Checking for updates"
     defs.checkForUpdate(version)
+
+try:
+    if "noKeyUpdate" in args:
+        print "Skipping keydb.ini update."
+    else:
+        pfs.updateKeyDatabase()
+except IndexError:
+    pfs.updateKeyDatabase()
 
 if not os.path.exists("accounts"):
     os.makedirs("accounts")

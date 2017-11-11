@@ -167,6 +167,11 @@ def isApp(dir):
     if os.path.isfile(dir + '/sce_sys/param.sfo'):
         return True
 
+def getKeyType(key):
+    if len(key) == 32:
+        return "klicense"
+    else:
+        return "zrif"
 
 def autoCMA():
     if sys.platform.__contains__('darwin'):
