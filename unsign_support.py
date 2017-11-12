@@ -49,19 +49,16 @@ def pushVars(acc, lad, resi):
     load = lad
     resign = resi
 
+def getLoad():
+    return load
 
 def getResign():
     return resign
 
 
-def getLoad():
-    return load
 
 
-
-
-
-def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False,load="",account=""):
+def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False,load="",account="",resign=False):
     if cmbackup == True:
             title=sfoParser.main(CMA + '/' + load + '/' + defs.getAid(account) + '/' + cmaBackup + '/sce_sys/param.sfo')
             location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile = title)
