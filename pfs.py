@@ -91,15 +91,17 @@ def decrypt(titleid):
         keyType = "--zRIF="
     else:
         keyType = "--klicensee="
-    if sys.platform.__contains__("linux"):
-        if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/app/ux0_temp_game_'+titleid+'_app_'+titleid):
+    if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/app/ux0_temp_game_'+titleid+'_app_'+titleid):
+        if sys.platform.__contains__("linux" or "darwin"):
             cmd = defs.getWorkingDir()+'/psvpfsparser --title_id_src="'+CMADir+'/EXTRACTED/APP/'+titleid+'/app/ux0_temp_game_'+titleid+'_app_'+titleid+'" --title_id_dst="'+CMADir+'/EXTRACTED/DPFS/APP/'+titleid+'" '+str(keyType)+str(rifkey)+' --f00d_url=cma.henkaku.xyz'
-            print "Executing: "+cmd
-            os.system(cmd)
-        if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/patch/ux0_temp_game_'+titleid+'_patch_'+titleid):
-            if sys.platform.__contains__("linux" or "darwin"):
-                cmd = defs.getWorkingDir()+'/psvpfsparser --title_id_src="'+CMADir+'/EXTRACTED/APP/'+titleid+'/patch/ux0_temp_game_'+titleid+'_patch_'+titleid+'" --title_id_dst="'+CMADir+'/EXTRACTED/DPFS/PATCH/'+titleid+'" '+str(keyType)+str(rifkey)+' --f00d_url=cma.henkaku.xyz'
-            elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
-                cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\patch\\ux0_temp_game_' + titleid + '_patch_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\PATCH\\' + titleid + '" ' + str(keyType) + str(rifkey) + ' --f00d_url=cma.henkaku.xyz'
-            print "Executing: "+cmd
-            os.system(cmd)
+        elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+            cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\app\\ux0_temp_game_' + titleid + '_app_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\APP\\' + titleid + '" ' + str(keyType) + str(rifkey) + ' --f00d_url=cma.henkaku.xyz'
+        print "Executing: "+cmd
+        os.system(cmd)
+    if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/patch/ux0_temp_game_'+titleid+'_patch_'+titleid):
+        if sys.platform.__contains__("linux" or "darwin"):
+            cmd = defs.getWorkingDir()+'/psvpfsparser --title_id_src="'+CMADir+'/EXTRACTED/APP/'+titleid+'/patch/ux0_temp_game_'+titleid+'_patch_'+titleid+'" --title_id_dst="'+CMADir+'/EXTRACTED/DPFS/PATCH/'+titleid+'" '+str(keyType)+str(rifkey)+' --f00d_url=cma.henkaku.xyz'
+        elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+            cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\patch\\ux0_temp_game_' + titleid + '_patch_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\PATCH\\' + titleid + '" ' + str(keyType) + str(rifkey) + ' --f00d_url=cma.henkaku.xyz'
+        print "Executing: "+cmd
+        os.system(cmd)
