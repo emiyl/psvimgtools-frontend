@@ -3,6 +3,7 @@ import fnmatch
 import os
 import sys
 import defs
+import pfs
 import sfoParser
 try:
     from Tkinter import *
@@ -91,7 +92,10 @@ class Unsign_Backup:
                 a += 1
                 if defs.isEncryptedApp(CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount()) + '/' + items):
                     title = sfoParser.main(CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount()) + '/' + items + '/sce_sys/param.sfo')
-                    self.backupList.insert(a, title + ' (' + items + ')')
+                    if pfs.isKeyKnown(items):
+                        self.backupList.insert(a, title + ' [PFS] (' + items + ')')
+                    else:
+                        self.backupList.insert(a, title + ' (' + items + ')')
                 elif unsign_support.getLoad() == 'SYSTEM' and defs.isBackup(CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount()) + '/' + items + '/' + items):
                     self.backupList.insert(a, items)
 

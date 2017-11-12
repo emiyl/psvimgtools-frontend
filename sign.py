@@ -2,6 +2,10 @@
 import fnmatch
 import os
 import sys
+import tkMessageBox
+import tkSimpleDialog
+
+import pfs
 import sfoParser
 import defs
 try:
@@ -17,7 +21,17 @@ except ImportError:
     py3 = 1
 
 import sign_support
-
+def pfdecrypt(titleid):
+    if pfs.isKeyKnown(titleid):
+        if tkMessageBox.askyesno(title="PFS",message="Decrypt PFS For "+titleid+"?"):
+            pfs.decrypt(titleid)
+            tkMessageBox.showinfo(title="PFS",message="PFS Decrypted For "+titleid)
+    else:
+        newKey = tkSimpleDialog.askstring(title="PFS",prompt="PFS Decryption Key Is Unknown For "+titleid+".\nIf You Have The Key In Either KLicensee Or zRIF Format\nEnter It Below:")
+        pfs.addKey(titleid,newKey)
+        tkMessageBox.showinfo(title="Added Key For: "+titleid+" To The Key Database.")
+        pfs.decrypt(titleid)
+        tkMessageBox.showinfo(title="PFS", message="PFS Decrypted For " + titleid)
 def vp_start_gui():
     """Starting point when module is the main routine."""
     global root
@@ -115,7 +129,10 @@ class Sign_Backup:
                 a += 1
                 if sign_support.getLoad() != 'SYSTEM' and defs.isApp(CMA + '/EXTRACTED/' + sign_support.getLoad() + '/' + items):
                     title = sfoParser.main(CMA + '/EXTRACTED/' + sign_support.getLoad() + '/' + items + '/sce_sys/param.sfo')
-                    self.backupList.insert(a, title + ' (' + items + ')')
+                    if pfs.isKeyKnown(items):
+                        self.backupList.insert(a, title + ' [PFS] (' + items + ')')
+                    else:
+                        self.backupList.insert(a, title + ' (' + items + ')')
                 elif sign_support.getLoad() == 'SYSTEM' and defs.isBackup(CMA + '/EXTRACTED/' + sign_support.getLoad() + '/' + items):
                     self.backupList.insert(a, items)
 
@@ -135,6 +152,14 @@ class Sign_Backup:
         self.Button9.configure(command=sign_support.cmbackup)
         self.Button9.configure(text='Install .cmbackup')
         self.Button9.configure(width=107)
+
+        if sign_support.getLoad() == "APP":
+            self.pfsDecryptButton = Button(top)
+            self.pfsDecryptButton.place(relx=0.75, rely=0.94, height=26, width=87)
+            self.pfsDecryptButton.configure(activebackground='#d9d9d9')
+            self.pfsDecryptButton.configure(command=lambda: pfdecrypt(defs.getTitleID(self.backupList.get(ACTIVE))))
+            self.pfsDecryptButton.configure(text='PFS Decrypt')
+            self.pfsDecryptButton.configure(width=87)
 
 
 class AutoScroll(object):

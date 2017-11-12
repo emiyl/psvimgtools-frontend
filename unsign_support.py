@@ -13,6 +13,7 @@ import backupType
 import backupType_support
 from shutil import *
 
+import pfs
 import sfoParser
 
 if sys.platform.__contains__('linux'):
@@ -167,8 +168,10 @@ def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False,load="",account=""):
             shutil.copy(CMA + '/' + load + '/' + cmaAID + '/' + cmaBackup + '/' + cmaBackup + '.psvinf', CMA + '/EXTRACTED/' + load + '/' + cmaBackup + '.psvinf')
     if resign == False and cmbackup == False:
         tkMessageBox.showinfo(title='Extract', message='Extraction Complete!')
-        print 'Opening Folder: ' + CMA + '/EXTRACTED/' + load + '/' + cmaBackup
-        openFolder(CMA + '/EXTRACTED/' + load + '/' + cmaBackup)
+        if pfs.isKeyKnown(cmaBackup):
+            if tkMessageBox.askyesno(title="PFS",message="The PFS Key for this application is known\nWould you like to decrypt PFS as well?"):
+                pfs.decrypt(cmaBackup)
+                tkMessageBox.showinfo(title="PFS",message="PFS Decrypted for " +cmaBackup)
         import unsign
         unsign.vp_start_gui()
     elif resign == True:
