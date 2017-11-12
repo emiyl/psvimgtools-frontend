@@ -47,7 +47,7 @@ def close_window(root):
 CMA = defs.getCmaDir()
 def patch(backup):
     import sign_support
-    unsign_support.goUnsign(backup,CMA,False,"SYSTEM",account,".")
+    unsign_support.goUnsign(cmaBackup=backup,CMA=CMA,cmbackup=False,load="SYSTEM",account=account,resign=".")
     print "Patching With Featured App Removed!"
     dbPath = CMA+"/EXTRACTED/SYSTEM/"+backup+"/ur0_shell/db/app.db"
     print "Opening: "+dbPath
@@ -132,7 +132,7 @@ class Unsign_Backup:
         self.Button1.place(relx=0.83, rely=0.94, height=26, width=117)
         self.Button1.configure(activebackground="#d9d9d9")
         self.Button1.configure(command = lambda: patch(self.backupList.get(ACTIVE)))
-        self.Button1.configure(text='''Patch Whitelist''')
+        self.Button1.configure(text='''Patch Featured App''')
 
 
 
