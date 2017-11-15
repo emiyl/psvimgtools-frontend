@@ -26,12 +26,16 @@ def pfdecrypt(titleid):
         if tkMessageBox.askyesno(title="PFS",message="Decrypt PFS For "+titleid+"?"):
             pfs.decrypt(titleid)
             tkMessageBox.showinfo(title="PFS",message="PFS Decrypted For "+titleid)
-    else:
+    """elif os.path.exists(defs.getCmaDir()+"/EXTRACTED/APP/"+titleid+"/savedata"):
+            pfs.decryptSavedata(titleid)
+            tkMessageBox.showinfo(title="PFS",message="Savedata was decrypted, game files where NOT decrypted (PFS Key Is Unknown)")"""
+    if not pfs.isKeyKnown(titleid):
         newKey = tkSimpleDialog.askstring(title="PFS",prompt="PFS Decryption Key Is Unknown For "+titleid+".\nIf You Have The Key In Either KLicensee Or zRIF Format\nEnter It Below:")
-        pfs.addKey(titleid,newKey)
-        tkMessageBox.showinfo(title="Added Key For: "+titleid+" To The Key Database.")
-        pfs.decrypt(titleid)
-        tkMessageBox.showinfo(title="PFS", message="PFS Decrypted For " + titleid)
+        if newKey != "":
+            pfs.addKey(titleid,newKey)
+            tkMessageBox.showinfo(title="Added Key For: "+titleid+" To The Key Database.")
+            pfs.decrypt(titleid)
+            tkMessageBox.showinfo(title="PFS", message="PFS Decrypted For " + titleid)
 def vp_start_gui():
     """Starting point when module is the main routine."""
     global root

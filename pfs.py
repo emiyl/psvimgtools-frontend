@@ -80,6 +80,16 @@ def getKey(titleid):
 
     print "Key is not found in the key database."
     return 404
+"""
+def decryptSavedata(titleid):
+    CMADir = defs.getCmaDir()
+    if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid):
+        if sys.platform.__contains__("linux" or "darwin"):
+            cmd = defs.getWorkingDir()+'/psvpfsparser --title_id_src="'+CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid+'" --title_id_dst="'+CMADir+'/EXTRACTED/DPFS/SAVEDATA/'+titleid+'" --f00d_url=cma.henkaku.xyz'
+        elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+            cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\savedata\\ux0_temp_game_' + titleid + '_savedata_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\SAVEDATA\\' + titleid + '" --f00d_url=cma.henkaku.xyz'
+        print "Executing: "+cmd
+        os.system(cmd)"""
 
 def decrypt(titleid):
     print("Preparing to PFS decrypt "+titleid)
@@ -105,3 +115,10 @@ def decrypt(titleid):
             cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\patch\\ux0_temp_game_' + titleid + '_patch_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\PATCH\\' + titleid + '" ' + str(keyType) + str(rifkey) + ' --f00d_url=cma.henkaku.xyz'
         print "Executing: "+cmd
         os.system(cmd)
+    """if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid):
+        if sys.platform.__contains__("linux" or "darwin"):
+            cmd = defs.getWorkingDir()+'/psvpfsparser --title_id_src="'+CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid+'" --title_id_dst="'+CMADir+'/EXTRACTED/DPFS/SAVEDATA/'+titleid+'" --f00d_url=cma.henkaku.xyz'
+        elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
+            cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\savedata\\ux0_temp_game_' + titleid + '_savedata_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\SAVEDATA\\' + titleid + '" --f00d_url=cma.henkaku.xyz'
+        print "Executing: "+cmd
+        os.system(cmd)"""
