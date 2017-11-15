@@ -10,14 +10,14 @@ of the account that created said backup
 4. If your on linux you require *libcurl4-gnutls-dev libboost-all-dev zlib1g-dev* and *libgcrypt-dev* 
 
 # Credits
-Thanks to @Tungol for bplistlib, Reading binary property lists in python.              
-Thanks to @Yifanlu for the original PSVIMGTOOLS command line                 
+Thanks to Tungol for bplistlib, Reading binary property lists in python.              
+Thanks to Yifanlu for the original PSVIMGTOOLS command line                 
 Thanks to Don Rozenberg for PAGE Which i used to create GUI's                  
-Thanks to @Codestation for QCMA                  
+Thanks to Codestation for QCMA                  
 Thanks to Chris Kreager a.k.a LanThief for his Python .SFO Parser             
 Thanks to DaveeFTW for cracking CMA keys. (cma.henkaku.xyz)               
 Thanks to Sony for the PSVITA.               
-Thanks to @motoharu-gosuto for psvpfstools 
+Thanks to Motoharu for psvpfstools 
 
 # Features
 Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data from CMA Config files.          
@@ -26,7 +26,7 @@ Account Mannager - Supports multiple PSN Accounts
 Quick Resign - Quickly change the owner of a backup from one account to another.            
 CMBACKUP - A way to share backup files with anyone easily                  
 Automatic updates - Will automatically scan for new updates and ask if u want to install           
-PFS Decryption - Decrypt the PFS Layer of applications and patch files, (thanks @motoharu-gosuto)
+PFS Decryption - Decrypt the PFS Layer of applications and patch files, (thanks motoharu-gosuto)
 # EasyInstallers
 **HiddenApps** - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65] 
 **Skype** - Install the Skype App -- The one from PSN [3.63 Or Lower]                                                
