@@ -39,6 +39,3 @@ PFS Decryption - Decrypt the PFS Layer of applications and patch files, (thanks 
 **Whitelister** - Patch a SYSTEM Backup with Whitelister v2 -- Play ALL games on your PSTV! [All FW]                      
 **EmuBubble** - Patch a PSP Game with an emulator bubble [All FW]               
 
-# Donate
-If you would like to support me and this project, you can donate to me using this link:
-https://goo.gl/dvHkEh
