@@ -39,17 +39,20 @@ def close_window(root):
 CMA = defs.getCmaDir()
 def patch(backup):
     import sign_support
-    unsign_support.goUnsign(backup,CMA,account, "PGAME",".")
-    print "Patching With VHBL"
-    shutil.copy(defs.getWorkingDir() + "/easyinstallers/VHBL/patch/PBOOT.PBP",CMA + "/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/")
+    unsign_support.goUnsign(backup,CMA,False,"PGAME",account,".")
+    print "Patching "+backup+" With VHBL."
+    if os.path.exists(CMA + "/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/PBOOT.PBP"):
+        print "Removing VHBL.."
+        os.remove(CMA + "/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/PBOOT.PBP")
+        print "Re-Patching VHBL"
+    shutil.copy(defs.getWorkingDir() + "/easyinstallers/VHBL/patch/PBOOT.PBP",CMA + "/EXTRACTED/PGAME/"+backup+"/game/ux0_pspemu_temp_game_PSP_GAME_"+backup+"/PBOOT.PBP")
     print "Signing to: " +account
     sign_support.goSign(account,"PGAME",backup,True)
     print "Copying Savedata To "+CMA+"/PSAVEDATA/"+defs.getAid(account)+"/VHBL01234"
     if not os.path.exists(CMA+"/PSAVEDATA/"+defs.getAid(account)+"/VHBL01234"):
         shutil.copytree(defs.getWorkingDir() + "/easyinstallers/VHBL/VHBL01234",CMA+"/PSAVEDATA/"+defs.getAid(account)+"/VHBL01234")
     import easyInstallers
-    tkMessageBox.showinfo(title="VHBL Easy Installer", message="VHBL Backup Created! (Note: Icon will be the same as base game)")
-    easyInstallers.close_window(root)
+    tkMessageBox.showinfo(title="ARK Easy Installer",message="VHBL Backup Created!\n(Note: Icon will be the same as base game)\nBe sure to copy the VHBL Savedata file too!")
     easyInstallers.vp_start_gui()
 def pushVars(acc):
     global account
@@ -113,7 +116,7 @@ class Unsign_Backup:
         self.backupList.configure(highlightcolor="#d9d9d9")
         self.backupList.configure(selectbackground="#c4c4c4")
         self.backupList.configure(width=10)
-        print "Looking For Backups In: "+CMA+"/PGAME/"+ defs.getAid(account)
+        print("Looking For Backups In: "+CMA+"/PGAME/"+ defs.getAid(account))
         for root, dir, files in os.walk(CMA+"/PGAME/"+ defs.getAid(account)):
             for items in fnmatch.filter(dir, "*"):
                 a += 1
