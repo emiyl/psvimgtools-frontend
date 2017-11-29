@@ -7,7 +7,6 @@ def sendSign(account):
     import sign_support
     sign_support.goSign(account,"APP","PCSF00124",True)
     tkMessageBox.showinfo(title="Skype EasyInstaller", message="Skype App Backup Created For: "+account)
-    close_window(root)
     import easyInstallers
     easyInstallers.close_window(root)
     easyInstallers.vp_start_gui()
