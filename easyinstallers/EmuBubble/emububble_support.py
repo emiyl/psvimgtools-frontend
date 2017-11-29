@@ -21,7 +21,6 @@ def createBackup(emulator,backup,account):
     print "Removing: "+defs.getCmaDir()+"/EXTRACTED/PGAME/"+backup
     shutil.rmtree(defs.getCmaDir()+"/EXTRACTED/PGAME/"+backup+"/")
     tkMessageBox.showinfo(title="Emulator Bubble",message=emulator+" Backup Created! (remember to refresh QCMA)")
-    emububble.destroy_New_Toplevel_1()
     import easyinstallers.EmuBubble.chooseBackup as CB
     CB.destroy_Unsign_Backup()
 
