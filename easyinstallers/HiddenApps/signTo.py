@@ -10,7 +10,6 @@ def sendSign(account):
     tkMessageBox.showinfo(title="Hidden Applications EasyInstaller", message="Hidden Apps Backup Created. For "+account)
     close_window(root)
     import easyInstallers
-    easyInstallers.close_window(root)
     easyInstallers.vp_start_gui()
 
 try:

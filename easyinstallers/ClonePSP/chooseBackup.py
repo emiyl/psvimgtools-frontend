@@ -40,7 +40,7 @@ def close_window(root):
 
 CMA = defs.getCmaDir()
 def patch(backup):
-    unsign_support.goUnsign(backup,CMA,account, "PGAME",".")
+    unsign_support.goUnsign(backup,CMA,False,"PGAME",account, ".")
     print "Cloning bubble.."
     import clone
     clone.vp_start_gui(account,backup,CMA)
