@@ -1,9 +1,5 @@
 
-import fnmatch
-import os
-import sys
 import tkMessageBox
-from symbol import import_from
 import defs
 import easyinstallers.Whitelister.main as Whitelister
 import easyinstallers.ARK.main as ARK
@@ -35,20 +31,22 @@ def set_Tk_var():
 
 def install(plugin):
     if plugin == 'ARK':
-        if tkMessageBox.askyesno(title="3.65?",message="ARK WILL NOT WORK ON 3.65+ \nDo you still want to continue?"):
+        if tkMessageBox.askyesno(title="3.65?",message="ARK WILL NOT WORK ON 3.65+\nDo you still want to continue?"):
                 ARK.vp_start_gui()
     elif plugin == 'VHBL':
         VHBL.vp_start_gui()
     elif plugin == 'HiddenApps':
-        HiddenApps.run()
+        if tkMessageBox.askyesno(title="3.67?",message="HiddenApps WILL NOT WORK ON 3.67+\nPlease use VitaTricks.tk for account switching on 3.67+\nDo you still want to continue?"):
+            HiddenApps.run()
     elif plugin == 'Whitelister':
         Whitelister.vp_start_gui()
     elif plugin == 'UriCaller':
-        UriCaller.vp_start_gui()
+        if tkMessageBox.askyesno(title="3.67?",message="UriCaller WILL NOT WORK ON 3.67+\nPlease use VitaTricks.tk for uri calling on 3.67+\nDo you still want to continue?"):
+            UriCaller.vp_start_gui()
     elif plugin == 'PSMRuntime':
         PSMRuntime.run()
     elif plugin == 'Skype':
-        if tkMessageBox.askyesno(title="3.65?",message="SKYPE WILL NOT WORK ON 3.65+ \nDo you still want to continue?"):
+        if tkMessageBox.askyesno(title="3.65?",message="SKYPE WILL NOT WORK ON 3.65+\nDo you still want to continue?"):
                 Skype.run()
     elif plugin == 'RemoveFeatured':
         RemoveFeatured.vp_start_gui()
