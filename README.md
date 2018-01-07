@@ -8,7 +8,7 @@ of the account that created said backup
 
 # Requirements
 1. A PC 32 or 64 Bit PC Running Windows, Mac or Linux. 
-2. A PSVita on ANY Firmware (even 3.65)
+2. A PSVita on ANY Firmware (even 3.67)
 3. QCMA by Codestation (Normal SONY CMA will work, but not recommended.)
 4. If your on linux you require *libcurl4-gnutls-dev libboost-all-dev zlib1g-dev* and *libgcrypt-dev* 
 
