@@ -1,5 +1,8 @@
+# DEVELOPMENT ON THIS SOFTWARE HAS ENDED.
+# I WONT FIX ANY BUGS OR UPDATE THE APPLICATION ANYMORE.
+
 # About
-This is a MultiPlatfomr GUI Interface For Team Molecule / Yifanlu's PSVIMGTools 
+This is a MultiPlatform GUI Interface For Team Molecule / Yifanlu's PSVIMGTools 
 Which is a tool that can be used to decrypt & extract PSVita Backup Files (.psvimg) Providing you know the AID (AccountID)
 of the account that created said backup
 
