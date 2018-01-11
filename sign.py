@@ -1,7 +1,6 @@
 
 import fnmatch
 import os
-import sys
 import tkMessageBox
 import tkSimpleDialog
 

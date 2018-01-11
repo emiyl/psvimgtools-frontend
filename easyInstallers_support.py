@@ -36,13 +36,11 @@ def install(plugin):
     elif plugin == 'VHBL':
         VHBL.vp_start_gui()
     elif plugin == 'HiddenApps':
-        if tkMessageBox.askyesno(title="3.67?",message="HiddenApps WILL NOT WORK ON 3.67+\nPlease use VitaTricks.tk for account switching on 3.67+\nDo you still want to continue?"):
-            HiddenApps.run()
+        HiddenApps.run()
     elif plugin == 'Whitelister':
         Whitelister.vp_start_gui()
     elif plugin == 'UriCaller':
-        if tkMessageBox.askyesno(title="3.67?",message="UriCaller WILL NOT WORK ON 3.67+\nPlease use VitaTricks.tk for uri calling on 3.67+\nDo you still want to continue?"):
-            UriCaller.vp_start_gui()
+        UriCaller.vp_start_gui()
     elif plugin == 'PSMRuntime':
         PSMRuntime.run()
     elif plugin == 'Skype':

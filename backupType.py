@@ -25,7 +25,6 @@ def vp_start_gui():
     top = Backup_Type (root)
     backupType_support.init(root, top)
     root.mainloop()
-    root.resizable(0, 0)
 w = None
 def create_Backup_Type(root, *args, **kwargs):
     '''Starting point when module is imported by another program.'''

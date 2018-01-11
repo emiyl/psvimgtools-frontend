@@ -1,7 +1,5 @@
 
 import os
-import subprocess
-import sys
 import shutil
 import tkFileDialog
 import tkMessageBox
@@ -36,7 +34,7 @@ if sys.platform.__contains__('linux'):
 if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
-        os.system('start "' + path + '"')
+        os.system('start "" "'+ path + '"')
 def cmbackup():
     cmfile = tkFileDialog.askopenfilename(title='Select cmbackup', filetypes=[('Unsigned CMA Backup Files', '*.cmbackup')])
     zf = zipfile.ZipFile(cmfile)

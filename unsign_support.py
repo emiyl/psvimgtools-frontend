@@ -61,7 +61,10 @@ def getResign():
 def goUnsign(cmaBackup, CMA=defs.getCmaDir(),cmbackup=False,load="",account="",resign=False):
     if cmbackup == True:
             title=sfoParser.main(CMA + '/' + load + '/' + defs.getAid(account) + '/' + cmaBackup + '/sce_sys/param.sfo')
-            location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile = title)
+            try:
+                location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile = title)
+            except:
+                location = tkFileDialog.asksaveasfilename(title='Select location',filetypes=[('Unsigned CMA Backup File', '*.cmbackup')],initialfile=cmaBackup)
             try:
                 print 'location: '+location
             except TypeError:
