@@ -1,5 +1,3 @@
-# DEVELOPMENT ON THIS SOFTWARE HAS ENDED.
-I WONT FIX ANY BUGS OR UPDATE THE APPLICATION ANYMORE.
 
 # About
 This is a MultiPlatform GUI Interface For Team Molecule / Yifanlu's PSVIMGTools 
