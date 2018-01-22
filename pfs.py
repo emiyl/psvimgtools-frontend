@@ -7,7 +7,7 @@ import sys
 
 import defs
 
-nps_games = "https://docs.google.com/spreadsheets/d/1HfI8elhzJW9XP9_A6KLx6AZpwP9vvWTal6i7NVwVWzs/export?format=csv&id=1HfI8elhzJW9XP9_A6KLx6AZpwP9vvWTal6i7NVwVWzs&gid=1180017671"
+nps_games = "https://nopaystation.com/csv/PSV_GAMES.csv"
 def updateKeyDatabase():
     print "Updating: "+defs.getWorkingDir()+"/keydb.ini"
     configParser = ConfigParser.RawConfigParser()
