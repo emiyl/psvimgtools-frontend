@@ -10,7 +10,7 @@ import pfs
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 # Requires REQUESTS -- pip install requests
 
-version = "v0.5.3.1"
+version = "v0.5.3.2"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"\ "
 print '|  GUI BY SILICAANDPINA!        |'
