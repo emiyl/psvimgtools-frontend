@@ -38,7 +38,7 @@ if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 def cmbackup():
     cmfile = tkFileDialog.askopenfilename(title='Select cmbackup', filetypes=[('Unsigned CMA Backup Files', '*.cmbackup')])
     if cmfile.__contains__("Gravity Rush FULL GAME (3.61 only!).cmbackup"):
-        print "YAR HAR!!, DO WHAT YOU WANT CAZ A PIRATE IS FREE!!"
+        print "DO WHAT YOU WANT CAZ A PIRATE IS FREE!!"
     zf = zipfile.ZipFile(cmfile)
     try:
         zf.extract(member="load.txt",path="temp")
