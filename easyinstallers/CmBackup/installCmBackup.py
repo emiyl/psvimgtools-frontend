@@ -3,11 +3,7 @@ import shutil
 import tkFileDialog
 import tkMessageBox
 import zipfile
-
 import sys
-
-import accSelect
-import accSelect_support
 import defs
 import sign_support
 
@@ -17,6 +13,10 @@ def cmbackupextract(account,file=""):
         cmfile = tkFileDialog.askopenfilename(title='Select cmbackup',filetypes=[('Unsigned CMA Backup Files', '*.cmbackup')])
     else:
         cmfile = file
+
+    if cmfile.__contains__("Gravity Rush FULL GAME (3.61 only!).cmbackup"):
+        print "YAR HAR!!, DO WHAT YOU WANT CAZ A PIRATE IS FREE!!"
+
     zf = zipfile.ZipFile(cmfile)
     try:
         zf.extract(member="load.txt", path="temp")
