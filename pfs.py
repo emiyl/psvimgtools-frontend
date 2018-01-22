@@ -7,7 +7,7 @@ import sys
 
 import defs
 
-nps_games = "https://docs.google.com/spreadsheets/d/18PTwQP7mlwZH1smpycHsxbEwpJnT8IwFP7YZWQT7ZSs/export?format=csv&id=18PTwQP7mlwZH1smpycHsxbEwpJnT8IwFP7YZWQT7ZSs&gid=1180017671"
+nps_games = "https://docs.google.com/spreadsheets/d/1HfI8elhzJW9XP9_A6KLx6AZpwP9vvWTal6i7NVwVWzs/export?format=csv&id=1HfI8elhzJW9XP9_A6KLx6AZpwP9vvWTal6i7NVwVWzs&gid=1180017671"
 def updateKeyDatabase():
     print "Updating: "+defs.getWorkingDir()+"/keydb.ini"
     configParser = ConfigParser.RawConfigParser()
