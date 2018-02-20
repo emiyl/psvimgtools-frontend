@@ -105,9 +105,8 @@ class Unsign_Backup:
         if unsign_support.getLoad() != "SYSTEM":
             self.Button1.configure(command=lambda: unsign_support.goUnsign(defs.getTitleID(self.backupList.get(ACTIVE)), CMA, False,unsign_support.getLoad(), unsign_support.getAccount()))
         else:
-            self.Button1.configure(
-                command=lambda: unsign_support.goUnsign(self.backupList.get(ACTIVE), CMA))
-        self.Button1.configure(text='Unsign & Extract')
+            self.Button1.configure(command=lambda: unsign_support.goUnsign(self.backupList.get(ACTIVE), CMA, False,unsign_support.getLoad(), unsign_support.getAccount()))
+            self.Button1.configure(text='Unsign & Extract')
         if unsign_support.getResign() == False:
             self.Button2 = Button(top)
             self.Button2.place(relx=0.01, rely=0.94, height=26, width=120)
