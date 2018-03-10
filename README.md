@@ -39,5 +39,5 @@ PFS Decryption - Decrypt the PFS Layer of applications and patch files, (thanks 
 **CmBackup** - Install a .cmbackup file -- [Download .cmbackup's](https://drive.google.com/open?id=0B8wXQbm9DD-6UndjcWFWNV9JTlk) [All FW]                                       
 **Whitelister** - Patch a SYSTEM Backup with Whitelister v2 -- Play ALL games on your PSTV! [All FW]                      
 **EmuBubble** - Patch a PSP Game with an emulator bubble [All FW]         
-**VitaShell** - Install a vitashell bubble, only usefull if you have 3.65 henkaku.
+**VitaShell** - Install a vitashell bubble, only usefull if you have 3.65 henkaku. [ALL FW]
 
