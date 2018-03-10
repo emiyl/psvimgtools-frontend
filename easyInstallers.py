@@ -85,7 +85,7 @@ class Easy_Installers:
         self.backupList.configure(highlightcolor='#d9d9d9')
         self.backupList.configure(selectbackground='#c4c4c4')
         self.backupList.configure(width=10)
-        for root, dir, files in os.walk(defs.getWorkingDir()+'/easyinstallers'):
+        for root, dir, files in defs.walklevel(defs.getWorkingDir()+'/easyinstallers',0):
             for items in fnmatch.filter(dir, '*'):
                 a += 1
                 if defs.isPlugin(items):

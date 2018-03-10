@@ -25,9 +25,9 @@ def pfdecrypt(titleid):
         if tkMessageBox.askyesno(title="PFS",message="Decrypt PFS For "+titleid+"?"):
             pfs.decrypt(titleid)
             tkMessageBox.showinfo(title="PFS",message="PFS Decrypted For "+titleid)
-    """elif os.path.exists(defs.getCmaDir()+"/EXTRACTED/APP/"+titleid+"/savedata"):
+    elif os.path.exists(defs.getCmaDir()+"/EXTRACTED/APP/"+titleid+"/savedata"):
             pfs.decryptSavedata(titleid)
-            tkMessageBox.showinfo(title="PFS",message="Savedata was decrypted, game files where NOT decrypted (PFS Key Is Unknown)")"""
+            tkMessageBox.showinfo(title="PFS",message="Savedata was decrypted, game files where NOT decrypted (PFS Key Is Unknown)")
     if not pfs.isKeyKnown(titleid):
         newKey = tkSimpleDialog.askstring(title="PFS",prompt="PFS Decryption Key Is Unknown For "+titleid+".\nIf You Have The Key In Either KLicensee Or zRIF Format\nEnter It Below:")
         if newKey != "":
@@ -127,7 +127,7 @@ class Sign_Backup:
         self.backupList.configure(selectbackground='#c4c4c4')
         self.backupList.configure(width=10)
         print 'Looking For Backups In: ' + CMA + '/EXTRACTED/' + sign_support.getLoad()
-        for root, dir, files in os.walk(CMA + '/EXTRACTED/' + sign_support.getLoad()):
+        for root, dir, files in defs.walklevel(CMA + '/EXTRACTED/' + sign_support.getLoad(),0):
             for items in fnmatch.filter(dir, '*'):
                 a += 1
                 if sign_support.getLoad() != 'SYSTEM' and defs.isApp(CMA + '/EXTRACTED/' + sign_support.getLoad() + '/' + items):

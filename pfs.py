@@ -80,7 +80,7 @@ def getKey(titleid):
 
     print "Key is not found in the key database."
     return 404
-"""
+
 def decryptSavedata(titleid):
     CMADir = defs.getCmaDir()
     if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid):
@@ -89,7 +89,7 @@ def decryptSavedata(titleid):
         elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
             cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\savedata\\ux0_temp_game_' + titleid + '_savedata_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\SAVEDATA\\' + titleid + '" --f00d_url=cma.henkaku.xyz'
         print "Executing: "+cmd
-        os.system(cmd)"""
+        os.system(cmd)
 
 def decrypt(titleid):
     print("Preparing to PFS decrypt "+titleid)

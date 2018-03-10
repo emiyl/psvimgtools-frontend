@@ -84,7 +84,7 @@ class Unsign_Backup:
         self.backupList.configure(selectbackground='#c4c4c4')
         self.backupList.configure(width=10)
         print 'Looking For Backups In: ' + CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount())
-        for root, dir, files in os.walk(CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount())):
+        for root, dir, files in defs.walklevel(CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount()),0):
             for items in fnmatch.filter(dir, '*'):
                 a += 1
                 if defs.isEncryptedApp(CMA + '/' + unsign_support.getLoad() + '/' + defs.getAid(unsign_support.getAccount()) + '/' + items):
