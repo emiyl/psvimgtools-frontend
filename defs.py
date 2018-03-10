@@ -94,7 +94,7 @@ if sys.platform.__contains__('linux'):
 if sys.platform.__contains__('win') and not sys.platform.__contains__("darwin"):
 
     def openFolder(path):
-        os.system('start "' + path + '"')
+        os.system('start "" "'+ path + '"')
 
 def getHomeDir():
     from os.path import expanduser

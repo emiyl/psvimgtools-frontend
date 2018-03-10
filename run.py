@@ -10,7 +10,7 @@ import pfs
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 # Requires REQUESTS -- pip install requests
 
-version = "v0.5.4"
+version = "v0.6"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"-\ "
 print '|  GUI BY SILICAANDPINA!        |'
@@ -65,7 +65,7 @@ except IndexError:
     ""
 
 try:
-    if args[0] != "" and args[0] != "noUpdateCheck":
+    if len(args) == 0:
         print "Extracting CMBackup File"
         import easyinstallers.CmBackup.main as CMBACKUP
         CMBACKUP.vp_start_gui(args[0])
