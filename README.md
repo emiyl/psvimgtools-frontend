@@ -29,7 +29,7 @@ CMBACKUP - A way to share backup files with anyone easily
 Automatic updates - Will automatically scan for new updates and ask if u want to install           
 PFS Decryption - Decrypt the PFS Layer of applications and patch files, (thanks motoharu-gosuto)
 # EasyInstallers
-**HiddenApps** - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65] 
+**HiddenApps** - Install ★Hidden Applications -- Enables [Account Switching](https://pastebin.com/raw/CiTUyjr4) [3.60 & 3.65]  
 **Skype** - Install the Skype App -- The one from PSN [3.63 Or Lower]                                                
 **ARK** - Patch a PSP Game with ARK-2 -- PSP/PSX ISO Loader [3.63 Or Lower]                                    
 **PSMRuntime** - Install the Playstation(R)Mobule Runtime v2.01 [All FW]                                       
