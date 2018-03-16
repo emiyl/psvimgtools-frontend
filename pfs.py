@@ -2,12 +2,10 @@ import csv
 import os
 import requests
 import ConfigParser
-
 import sys
-
 import defs
 
-nps_games = "https://nopaystation.com/csv/PSV_GAMES.csv"
+nps_games = "https://nopaystation.com/tsv/PSV_GAMES.tsv" ## TheRadziu said hes dropping support for .csv :(
 def updateKeyDatabase():
     print "Updating: "+defs.getWorkingDir()+"/keydb.ini"
     configParser = ConfigParser.RawConfigParser()
@@ -18,7 +16,7 @@ def updateKeyDatabase():
     except:
         ""
     try:
-        open("temp.csv","wb").write(requests.get(nps_games).text.encode("utf-8"))
+        open("temp.csv","wb").write(requests.get(nps_games).text.encode("utf-8").replace("\t",",")) ## So just convert tsv to csv!
         with open('temp.csv', 'rb') as csvfile:
             keydb = csv.DictReader(csvfile)
             for row in keydb:
@@ -115,10 +113,10 @@ def decrypt(titleid):
             cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\patch\\ux0_temp_game_' + titleid + '_patch_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\PATCH\\' + titleid + '" ' + str(keyType) + str(rifkey) + ' --f00d_url=cma.henkaku.xyz'
         print "Executing: "+cmd
         os.system(cmd)
-    """if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid):
+    if os.path.exists(CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid):
         if sys.platform.__contains__("linux" or "darwin"):
             cmd = defs.getWorkingDir()+'/psvpfsparser --title_id_src="'+CMADir+'/EXTRACTED/APP/'+titleid+'/savedata/ux0_temp_game_'+titleid+'_savedata_'+titleid+'" --title_id_dst="'+CMADir+'/EXTRACTED/DPFS/SAVEDATA/'+titleid+'" --f00d_url=cma.henkaku.xyz'
         elif sys.platform.__contains__("win") and not sys.platform.__contains__("darwin"):
             cmd = defs.getWorkingDir() + '\\psvpfsparser.exe --title_id_src="' + CMADir + '\\EXTRACTED\\APP\\' + titleid + '\\savedata\\ux0_temp_game_' + titleid + '_savedata_' + titleid + '" --title_id_dst="' + CMADir + '\\EXTRACTED\\DPFS\\SAVEDATA\\' + titleid + '" --f00d_url=cma.henkaku.xyz'
         print "Executing: "+cmd
-        os.system(cmd)"""
+        os.system(cmd)
