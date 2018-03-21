@@ -11,24 +11,24 @@ of the account that created said backup
 4. If your on linux you require *libcurl4-gnutls-dev libboost-all-dev zlib1g-dev* and *libgcrypt-dev* 
 
 # Building/Running from source
-This software is written in Python 2.7.14, 
-you will need to install that for whatever operating system you are using,
+This software is written in Python 2.7.14,          
+you will need to install that for whatever operating system you are using,             
+ 
+Requires the following python libaries:          
 
-Requires the following python libaries:
+bplistlib (only really needed if you are using a mac) - https://github.com/tungol/bplistlib              
+requests - http://python-requests.org (or $ pip install requests)            
+requests is *normally* installed by default.            
 
-bplistlib (only really needed if you are using a mac) - https://github.com/tungol/bplistlib 
-requests - http://python-requests.org (or $ pip install requests) 
-requests is *normally* installed by default.
+if you want to build the application use (Pyinstaller)[https://www.pyinstaller.org/]          
+if you just want to run it from source, just do python run.py           
 
-if you want to build the application use (Pyinstaller)[https://www.pyinstaller.org/] 
-if you just want to run it from source, just do python run.py
+for mac/linux: $ pyinstaller -F run.py     
+for windows C:\> pyinstaller -i icon.ico run.py       
 
-for mac/linux: $ pyinstaller -F run.py
-for windows C:\> pyinstaller -i icon.ico run.py
-
-after thats done copy the easyinstallers folder from the source folder into dist/run
+after thats done copy the easyinstallers folder from the source folder into dist/run           
 download psvimgtools from (yifanlu)[https://github.com/yifanlu/psvimgtools/releases] and copy it into the dist/run directory
-(optional: download psvpfstools and put it into the same directory as psvimgtools)
+(optional: download psvpfstools and put it into the dist/run if you dont, pfs decryption will not work.)                 
 
 # Credits
 Thanks to Tungol for bplistlib, Reading binary property lists in python.              
