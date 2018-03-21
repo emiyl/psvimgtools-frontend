@@ -17,8 +17,7 @@ you will need to install that for whatever operating system you are using,
 Requires the following python libaries:          
 
 bplistlib (only really needed if you are using a mac) - https://github.com/tungol/bplistlib              
-requests - http://python-requests.org (or $ pip install requests)            
-requests is *normally* installed by default.            
+requests - http://python-requests.org (or $ pip install requests)                     
 
 if you want to build the application you are going to need [Pyinstaller](https://www.pyinstaller.org/)          
 if you just want to run it from source. do $ python run.py           
