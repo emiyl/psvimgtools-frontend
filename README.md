@@ -20,14 +20,14 @@ bplistlib (only really needed if you are using a mac) - https://github.com/tungo
 requests - http://python-requests.org (or $ pip install requests)            
 requests is *normally* installed by default.            
 
-if you want to build the application use (Pyinstaller)[https://www.pyinstaller.org/]          
+if you want to build the application use [Pyinstaller](https://www.pyinstaller.org/)          
 if you just want to run it from source, just do python run.py           
 
 for mac/linux: $ pyinstaller -F run.py     
 for windows C:\> pyinstaller -i icon.ico run.py       
 
 after thats done copy the easyinstallers folder from the source folder into dist/run           
-download psvimgtools from (yifanlu)[https://github.com/yifanlu/psvimgtools/releases] and copy it into the dist/run directory
+download [psvimgtools from yifanlu](https://github.com/yifanlu/psvimgtools/releases) and copy it into the dist/run directory
 (optional: download psvpfstools and put it into the dist/run if you dont, pfs decryption will not work.)                 
 
 # Credits
