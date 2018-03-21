@@ -20,8 +20,8 @@ bplistlib (only really needed if you are using a mac) - https://github.com/tungo
 requests - http://python-requests.org (or $ pip install requests)            
 requests is *normally* installed by default.            
 
-if you want to build the application use [Pyinstaller](https://www.pyinstaller.org/)          
-if you just want to run it from source, just do python run.py           
+if you want to build the application you are going to need [Pyinstaller](https://www.pyinstaller.org/)          
+if you just want to run it from source. do $ python run.py           
 
 for mac/linux: $ pyinstaller -F run.py     
 for windows C:\> pyinstaller -i icon.ico run.py       
