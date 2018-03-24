@@ -38,7 +38,7 @@ Thanks to Chris Kreager a.k.a LanThief for his Python .SFO Parser
 Thanks to DaveeFTW for cracking CMA keys. (cma.henkaku.xyz)               
 Thanks to Sony for the PSVITA.               
 Thanks to Motoharu for psvpfstools             
-Thanks to all NPS Contributers for NoPayStation         
+Thanks to all NoPayStation Contributers for decryption zRIFs        
 
 # Features
 Intergration with CMA. (Particually QCMA) PSVIMGTOOLS-FRONTEND will read some data from CMA Config files.          
