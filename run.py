@@ -1,6 +1,6 @@
+import random
 import defs
 import os
-import fnmatch
 import getopt
 import sys
 import urllib
@@ -10,12 +10,21 @@ import pfs
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 # Requires REQUESTS -- pip install requests
 
-version = "v0.6"
+version = "v0.6.1"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"-\ "
 print '|  GUI BY SILICAANDPINA!        |'
 print '|  CLI BY YIFANLU / MOLECULE    |'
 print '\-------------------------------/'
+
+#I was board so i decided to add this useless feature...
+
+print "\nMessage from SilicaAndPina:\n"
+listOfOptions = ["I like to see girls die..","Hyperdimension: neptunia is the best.","Blanc is best CPU..","Uzume is best CPU..","I'd like to see Silica die the most!",":3","Subscribe.. http://youtube.com/c/silicasan","Follow me: http://twitter.com/SiIicaAndPina","If you also like to see girls die...\nThen follow me here http://twitter.com/animegirlsdying :3","Mining bitcoins...","Unable to contact silica..","Im watching girls die right now. leave me alone.","Datamining sony SDK..","Does anyone actually read these?","I like it when cute girls die.","Downloading henkaku 3.67...\nError: 404 Exploit Not Found.","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","Traceback (most recent call last)\n\tFile: C:\\temp\\run.py\n\t\tprint(\"I like to see girls die\")\nErrorError: This is a fake error.\n"]
+
+print random.choice(listOfOptions)
+
+
 
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
@@ -65,7 +74,7 @@ except IndexError:
     ""
 
 try:
-    if len(args) == 0:
+    if len(args) == 1:
         print "Extracting CMBackup File"
         import easyinstallers.CmBackup.main as CMBACKUP
         CMBACKUP.vp_start_gui(args[0])
@@ -96,10 +105,6 @@ if not os.path.exists("keys"):
 
 a = 0
 
-print "Setting Up EasyInstallers."
-for root, dir, files in os.walk("*"):
-    for items in fnmatch.filter(dir, "*"):
-        sys.path.append(items)
 
 print ("Checking CMADir.txt")
 if not os.path.exists("cmadir.txt"):
