@@ -59,9 +59,9 @@ def isKeyKnown(titleid):
 
 def getKey(titleid):
     print "Looking up key for "+titleid
-    configParser = ConfigParser.RawConfigParser()
-    configParser.read(defs.getWorkingDir()+"/keydb.ini")
     try:
+        configParser = ConfigParser.RawConfigParser()
+        configParser.read(defs.getWorkingDir()+"/keydb.ini")
         print("Checking zRIF..")
         key = configParser.get("zrif",titleid)
         print "Key found in zRIF"
