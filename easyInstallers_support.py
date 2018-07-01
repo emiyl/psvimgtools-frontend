@@ -5,6 +5,7 @@ import easyinstallers.Whitelister.main as Whitelister
 import easyinstallers.ARK.main as ARK
 import easyinstallers.HiddenApps.main as HiddenApps
 import easyinstallers.VitaShell.main as VitaShell
+import easyinstallers.hencore.main as hencore
 import easyinstallers.VHBL.main as VHBL
 import easyinstallers.UriCaller.main as UriCaller
 import easyinstallers.PSMRuntime.main as PSMRuntime
@@ -57,6 +58,8 @@ def install(plugin):
         clonePSP.vp_start_gui()
     elif plugin == 'VitaShell':
         VitaShell.run()
+    elif plugin == 'hencore':
+        hencore.run()
 
     else:
         ### Load Custom EasyInstaller. ###
