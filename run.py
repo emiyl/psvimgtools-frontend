@@ -4,12 +4,8 @@ import os
 import getopt
 import sys
 import urllib
-import urllib2
 import main
 import pfs
-import zipfile
-import subprocess
-import shutil
 
 # Requires BPlistLib -- https://github.com/tungol/bplistlib
 # Requires REQUESTS -- pip install requests
@@ -18,56 +14,9 @@ version = "v0.6.1"
 os.chdir(defs.getWorkingDir())
 print "/--PSVIMGTOOLS-FRONTEND "+version+"-\ "
 print '|  GUI BY SILICAANDPINA!        |'
-print '|  CLI BY YIFANLU / MOLECULE    |'
+print '|  CLI BY YIFANLU / MOLECULE!   |'
 print '|  MOD BY EMIYL!                |'
 print '\-------------------------------/'
-
-if not os.path.exists("easyinstallers/hencore/PCSG90096/app"):
-	print 'Downloading bitter smile...'
-	os.makedirs("hencore")
-	open("hencore/bittersmile.pkg", "wb").write(urllib2.urlopen("http://ares.dl.playstation.net/cdn/JP0741/PCSG90096_00/xGMrXOkORxWRyqzLMihZPqsXAbAXLzvAdJFqtPJLAZTgOcqJobxQAhLNbgiFydVlcmVOrpZKklOYxizQCRpiLfjeROuWivGXfwgkq.pkg").read())
-	print 'Downloading pkg2zip...'
-	open("hencore/pkg2zip_32bit.zip", "wb").write(urllib2.urlopen("https://github.com/mmozeiko/pkg2zip/releases/download/v1.8/pkg2zip_32bit.zip").read())
-	print 'Unzipping pkg2zip...'
-	zip_ref = zipfile.ZipFile("hencore/pkg2zip_32bit.zip", 'r')
-	zip_ref.extractall("hencore")
-	zip_ref.close()
-	os.remove("hencore/pkg2zip_32bit.zip")
-	print 'Downloading h-encore...'
-	open("hencore/h-encore.zip", "wb").write(urllib2.urlopen("https://github.com/TheOfficialFloW/h-encore/releases/download/v1.0/h-encore.zip").read())
-	print 'Unzipping h-encore...'
-	zip_ref = zipfile.ZipFile("hencore/h-encore.zip", 'r')
-	zip_ref.extractall("hencore")
-	zip_ref.close()
-	os.remove("hencore/h-encore.zip")
-	print 'Decrypting pkg...'
-	os.system('hencore.bat')
-	print 'Copying game to h-encore folder...'
-	source = "hencore/app/PCSG90096/"
-	dest1 = "hencore/h-encore/app/ux0_temp_game_PCSG90096_app_PCSG90096/"
-	files = os.listdir(source)
-	for f in files:
-			shutil.move(source+f, dest1)	
-	print 'Copying license...'
-	shutil.copy2("hencore/h-encore/app/ux0_temp_game_PCSG90096_app_PCSG90096/sce_sys/package/temp.bin", "hencore/h-encore/license/ux0_temp_game_PCSG90096_license_app_PCSG90096")
-	print 'Renaming license...'
-	shutil.move("hencore/h-encore/license/ux0_temp_game_PCSG90096_license_app_PCSG90096/temp.bin", "hencore/h-encore/license/ux0_temp_game_PCSG90096_license_app_PCSG90096/6488b73b912a753a492e2714e9b38bc7.rif")
-	print 'Putting sce_sys into the right place...'
-	if not os.path.exists("hencore/h-encore/sce_sys/"):
-		os.makedirs("hencore/h-encore/sce_sys/")
-	source = "hencore/h-encore/PCSG90096/sce_sys/"
-	dest1 = "hencore/h-encore/sce_sys/"
-	files = os.listdir(source)
-	for f in files:
-			shutil.move(source+f, dest1)
-	os.rmdir("hencore/h-encore/PCSG90096/sce_sys")
-	os.rmdir("hencore/h-encore/PCSG90096/")
-	print 'Moving h-encore to easyinstallers folder...'
-	source = "hencore/h-encore/"
-	dest1 = "easyinstallers/hencore/PCSG90096"
-	files = os.listdir(source)
-	for f in files:
-			shutil.move(source+f, dest1)
 
 opts, args = getopt.getopt(sys.argv[1:], 'x:y:')
 try:
@@ -123,15 +72,15 @@ try:
         CMBACKUP.vp_start_gui(args[0])
 except IndexError:
     ""
-#try:
-#    if "noUpdateCheck" in args:
-print "Skipping Update Check."
-#    else:
-#        print "Checking for updates"
-#        defs.checkForUpdate(version)
-#except IndexError:
-#	print "Checking for updates"
-#	defs.checkForUpdate(version)
+try:
+    if "noUpdateCheck" in args:
+        print "Skipping Update Check."
+    else:
+        print "Checking for updates"
+        defs.checkForUpdate(version)
+except IndexError:
+    print "Checking for updates"
+    defs.checkForUpdate(version)
 
 try:
     if "noKeyUpdate" in args:
@@ -258,4 +207,3 @@ else:
     quit()
 
 sys.exit()
-
